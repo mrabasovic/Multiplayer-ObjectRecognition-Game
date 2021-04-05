@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SpriteKit
 
 class ViewController: UIViewController {
 
@@ -17,6 +18,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         srediDugmad()
+        GameCenterHelper.helper.viewController = self
+
     }
 
 
@@ -25,7 +28,7 @@ class ViewController: UIViewController {
         hostBtn.layer.cornerRadius = 5
         hostBtn.layer.borderWidth = 1
         hostBtn.layer.borderColor = UIColor.black.cgColor
-        hostBtn.layer
+        //hostBtn.layer
     }
 }
 
