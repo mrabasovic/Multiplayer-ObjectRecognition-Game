@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B66D543A261BB0A200B1D708 /* GameCenterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66D5439261BB0A200B1D708 /* GameCenterHelper.swift */; };
+		B66D5442261CEC6B00B1D708 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66D5441261CEC6B00B1D708 /* GameViewController.swift */; };
 		B6D8481826164DE800A36CF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D8481726164DE800A36CF5 /* AppDelegate.swift */; };
 		B6D8481A26164DE800A36CF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D8481926164DE800A36CF5 /* SceneDelegate.swift */; };
 		B6D8481C26164DE800A36CF5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D8481B26164DE800A36CF5 /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		B66D5439261BB0A200B1D708 /* GameCenterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterHelper.swift; sourceTree = "<group>"; };
+		B66D5441261CEC6B00B1D708 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		B6D8481426164DE800A36CF5 /* mobilnoracunarstvo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mobilnoracunarstvo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6D8481726164DE800A36CF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6D8481926164DE800A36CF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 			children = (
 				B6D8481B26164DE800A36CF5 /* ViewController.swift */,
 				B6D848302616637B00A36CF5 /* HostViewController.swift */,
+				B66D5441261CEC6B00B1D708 /* GameViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B66D5442261CEC6B00B1D708 /* GameViewController.swift in Sources */,
 				B66D543A261BB0A200B1D708 /* GameCenterHelper.swift in Sources */,
 				B6D8481C26164DE800A36CF5 /* ViewController.swift in Sources */,
 				B6D848312616637B00A36CF5 /* HostViewController.swift in Sources */,

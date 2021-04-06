@@ -6,30 +6,55 @@
 //
 
 import UIKit
-
+import GameKit
 
 class HostViewController: UIViewController {
 
-    @IBOutlet weak var imeTxt: UITextField!
-    @IBOutlet weak var tabelaImena: UITableView!
-    @IBOutlet weak var startBtn: UIButton!
+
+    @IBOutlet weak var btnStart: UIButton!
+    private var gameCenterHelper: GameCenterHelper!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        pokreniGameCenter()
+        btnStart.isEnabled = false
+        btnStart.layer.cornerRadius = 10
         
-
-        
+        gameCenterHelper = GameCenterHelper()
+        gameCenterHelper.delegate = self
+        gameCenterHelper.authenticatePlayer()
     }
-    
 
     @IBAction func startPressed(_ sender: UIButton) {
-        
-        // ovo hocu da se pokrene cim udjem u online game ane na dodir dugmeta start al smisli lepo kako ces
-        GameCenterHelper.helper.presentMatchmaker()
-    }
-    
-    func pokreniGameCenter(){
-        GameCenterHelper.helper.viewController = self
+        gameCenterHelper.presentMatchmaker()
     }
 
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let vc = segue.destination as? GameViewController,
+              let match = sender as? GKMatch else { return }
+        
+        vc.match = match
+    }
 }
+
+extension HostViewController: GameCenterHelperDelegate {
+    func didChangeAuthStatus(isAuthenticated: Bool) {
+        btnStart.isEnabled = isAuthenticated
+    }
+    
+    func presentGameCenterAuth(viewController: UIViewController?) {
+        guard let vc = viewController else {return}
+        self.present(vc, animated: true)
+    }
+    
+    func presentMatchmaking(viewController: UIViewController?) {
+        guard let vc = viewController else {return}
+        self.present(vc, animated: true)
+    }
+    
+    func presentGame(match: GKMatch) {
+        performSegue(withIdentifier: "showGame", sender: match)
+    }
+}
+
+

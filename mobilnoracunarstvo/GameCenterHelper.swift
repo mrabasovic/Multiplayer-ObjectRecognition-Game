@@ -1,5 +1,5 @@
-import GameKit
 import Foundation
+import GameKit
 
 protocol GameCenterHelperDelegate: class {
     func didChangeAuthStatus(isAuthenticated: Bool)
@@ -8,7 +8,7 @@ protocol GameCenterHelperDelegate: class {
     func presentGame(match: GKMatch)
 }
 
-final class GameCenterHelper: NSObject, GKLocalPlayerListener{
+final class GameCenterHelper: NSObject, GKLocalPlayerListener {
     weak var delegate: GameCenterHelperDelegate?
     
     private let minPlayers: Int = 2
@@ -18,15 +18,15 @@ final class GameCenterHelper: NSObject, GKLocalPlayerListener{
     private var currentVC: GKMatchmakerViewController?
     
     var isAuthenticated: Bool {
-            return GKLocalPlayer.local.isAuthenticated
-        }
+        return GKLocalPlayer.local.isAuthenticated
+    }
     
     func authenticatePlayer() {
-        GKLocalPlayer.local.authenticateHandler = { (gcAuthVC, error) in
+        GKLocalPlayer.local.authenticateHandler = { (gameCenterAuthViewController, error) in
             self.delegate?.didChangeAuthStatus(isAuthenticated: self.isAuthenticated)
-                
+            
             guard GKLocalPlayer.local.isAuthenticated else {
-                self.delegate?.presentGameCenterAuth(viewController: gcAuthVC)
+                self.delegate?.presentGameCenterAuth(viewController: gameCenterAuthViewController)
                 return
             }
 
@@ -34,39 +34,36 @@ final class GameCenterHelper: NSObject, GKLocalPlayerListener{
         }
     }
     
-    
     func presentMatchmaker(withInvite invite: GKInvite? = nil) {
         guard GKLocalPlayer.local.isAuthenticated,
-                let vc = createMatchmaker(withInvite: invite) else {
+              let vc = createMatchmaker(withInvite: invite) else {
             return
         }
-            
+        
         currentVC = vc
         vc.matchmakerDelegate = self
         delegate?.presentMatchmaking(viewController: vc)
     }
     
     private func createMatchmaker(withInvite invite: GKInvite? = nil) -> GKMatchmakerViewController? {
-            
-            //If there is an invite, create the matchmaker vc with it
-            if let invite = invite {
-                return GKMatchmakerViewController(invite: invite)
-            }
-            
-            return GKMatchmakerViewController(matchRequest: createRequest())
+        
+        //If there is an invite, create the matchmaker vc with it
+        if let invite = invite {
+            return GKMatchmakerViewController(invite: invite)
         }
+        
+        return GKMatchmakerViewController(matchRequest: createRequest())
+    }
     
     private func createRequest() -> GKMatchRequest {
-            let request = GKMatchRequest()
-            request.minPlayers = minPlayers
-            request.maxPlayers = maxPlayers
-            request.inviteMessage = inviteMessage
-            
-            return request
-        }
-    
+        let request = GKMatchRequest()
+        request.minPlayers = minPlayers
+        request.maxPlayers = maxPlayers
+        request.inviteMessage = inviteMessage
+        
+        return request
+    }
 }
-
 
 
 extension GameCenterHelper: GKMatchmakerViewControllerDelegate {
