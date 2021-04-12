@@ -8,11 +8,12 @@ protocol GameCenterHelperDelegate: class {
     func presentGame(match: GKMatch)
 }
 
+
 final class GameCenterHelper: NSObject, GKLocalPlayerListener {
     weak var delegate: GameCenterHelperDelegate?
     
     private let minPlayers: Int = 2
-    private let maxPlayers: Int = 3
+    private let maxPlayers: Int = 2
     private let inviteMessage = "Da li zelite da igrate Find Me?"
     
     private var currentVC: GKMatchmakerViewController?
@@ -35,12 +36,16 @@ final class GameCenterHelper: NSObject, GKLocalPlayerListener {
     }
     
     func presentMatchmaker(withInvite invite: GKInvite? = nil) {
-        guard GKLocalPlayer.local.isAuthenticated,
-              let vc = createMatchmaker(withInvite: invite) else {
-            return
-        }
+        guard GKLocalPlayer.local.isAuthenticated else {return}
+                
+        let request = GKMatchRequest()
+        request.minPlayers = minPlayers
+        request.maxPlayers = maxPlayers
+        request.inviteMessage = inviteMessage
+                
+        guard let vc = GKMatchmakerViewController(matchRequest: request) else {return}
         
-        currentVC = vc
+        
         vc.matchmakerDelegate = self
         delegate?.presentMatchmaking(viewController: vc)
     }
@@ -49,6 +54,7 @@ final class GameCenterHelper: NSObject, GKLocalPlayerListener {
         
         //If there is an invite, create the matchmaker vc with it
         if let invite = invite {
+            print("usao u invite")
             return GKMatchmakerViewController(invite: invite)
         }
         
@@ -61,6 +67,7 @@ final class GameCenterHelper: NSObject, GKLocalPlayerListener {
         request.maxPlayers = maxPlayers
         request.inviteMessage = inviteMessage
         
+        print("napravio request")
         return request
     }
 }
@@ -69,14 +76,26 @@ final class GameCenterHelper: NSObject, GKLocalPlayerListener {
 extension GameCenterHelper: GKMatchmakerViewControllerDelegate {
     func matchmakerViewController(_ viewController: GKMatchmakerViewController, didFind match: GKMatch) {
         viewController.dismiss(animated: true)
+        
         delegate?.presentGame(match: match)
+        print("matchmaker view controler")
     }
     
     func player(_ player: GKPlayer, didAccept invite: GKInvite) {
         currentVC?.dismiss(animated: true, completion: {
             self.presentMatchmaker(withInvite: invite)
+            print("Uspelo didacceptinvite")
         })
     }
+    
+    // mozda je bolja fja iznad umesto ove
+//    func player(_ player: GKPlayer, didAccept invite: GKInvite) {
+//        // Present the view controller in the invitation state
+//        let viewController = GKMatchmakerViewController(invite: invite)
+//        viewController?.matchmakerDelegate = self
+//        let rootViewController = UIApplication.shared.windows.first!.rootViewController
+//        rootViewController?.present(viewController!, animated: true, completion: nil)
+//    }
     
     func matchmakerViewControllerWasCancelled(_ viewController: GKMatchmakerViewController) {
         viewController.dismiss(animated: true)

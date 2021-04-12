@@ -47,6 +47,7 @@
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
+		<string>peer-peer</string>
 		<string>armv7</string>
 		<string>gamekit</string>
 	</array>
