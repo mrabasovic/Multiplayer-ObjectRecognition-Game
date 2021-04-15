@@ -30,10 +30,10 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
 
         print("Game view KONTROLER")
-        //gameModel = GameModel()
-        //match?.delegate = self
+        gameModel = GameModel()
+        match?.delegate = self
         
-        //savePlayers()
+        savePlayers()
         //updateUI()
         
     }
@@ -69,11 +69,13 @@ class GameViewController: UIViewController {
     private func savePlayers() {
         guard let player2Name = match?.players.first?.displayName else { return }
             
-        let player1 = Igrac(ime: GKLocalPlayer.local.displayName)
-        let player2 = Igrac(ime: player2Name)
+        
+        let player1 = Igrac(ime: GKLocalPlayer.local.displayName, pogodjeni: 0)
+        
+        let player2 = Igrac(ime: player2Name, pogodjeni: 0)
             
         gameModel.igraci = [player1, player2]
-            
+        print(gameModel.igraci)
         gameModel.igraci.sort { (player1, player2) -> Bool in
             player1.ime < player2.ime
         }
