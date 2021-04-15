@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,7 +22,7 @@
                                 <state key="normal" title="Host Game"/>
                                 <connections>
                                     <action selector="hostPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rJZ-jb-5Bn"/>
-                                    <segue destination="6Yb-XJ-wcE" kind="show" identifier="hostujEkran" id="GYU-ZJ-WU5"/>
+                                    <segue destination="HCn-3h-L4c" kind="show" identifier="showGame" id="pZb-eg-qXa"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZXe-jY-qUi">
@@ -54,7 +54,7 @@
             <objects>
                 <viewController id="6Yb-XJ-wcE" customClass="HostViewController" customModule="mobilnoracunarstvo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Icb-1b-T2K">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vase ime:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="No5-si-gku">
@@ -93,17 +93,16 @@
                     <navigationItem key="navigationItem" id="aE4-dK-5FQ"/>
                     <connections>
                         <outlet property="btnStart" destination="6ZH-kG-C8D" id="9re-fh-gRH"/>
-                        <segue destination="HCn-3h-L4c" kind="show" identifier="showGame" id="1my-th-9MT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rkR-DF-tAN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="668.11594202898561" y="71.651785714285708"/>
+            <point key="canvasLocation" x="1628" y="61"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="xMH-7T-zR5">
             <objects>
-                <viewController storyboardIdentifier="showGame" id="HCn-3h-L4c" customClass="GameViewController" customModule="mobilnoracunarstvo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HCn-3h-L4c" customClass="GameViewController" customModule="mobilnoracunarstvo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0fl-lh-rFy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -150,7 +149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="axU-xL-Jgy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1395" y="90"/>
+            <point key="canvasLocation" x="794" y="61"/>
         </scene>
     </scenes>
     <resources>

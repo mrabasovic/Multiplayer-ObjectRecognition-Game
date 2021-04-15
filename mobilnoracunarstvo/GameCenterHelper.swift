@@ -75,27 +75,28 @@ final class GameCenterHelper: NSObject, GKLocalPlayerListener {
 
 extension GameCenterHelper: GKMatchmakerViewControllerDelegate {
     func matchmakerViewController(_ viewController: GKMatchmakerViewController, didFind match: GKMatch) {
-        viewController.dismiss(animated: true)
+        //viewController.dismiss(animated: true)    zakomentarisali to jer zbog toga nije hteo da otvori gameviewcontr tj govorio ono da nije u window hierarchy!
         
-        delegate?.presentGame(match: match)
+    
+        delegate?.presentGame(match: match) 
         print("matchmaker view controler")
     }
     
-    func player(_ player: GKPlayer, didAccept invite: GKInvite) {
-        currentVC?.dismiss(animated: true, completion: {
-            self.presentMatchmaker(withInvite: invite)
-            print("Uspelo didacceptinvite")
-        })
-    }
+//    func player(_ player: GKPlayer, didAccept invite: GKInvite) {
+//        currentVC?.dismiss(animated: true, completion: {
+//            self.presentMatchmaker(withInvite: invite)
+//            print("Uspelo didacceptinvite")
+//        })
+//    }
     
     // mozda je bolja fja iznad umesto ove
-//    func player(_ player: GKPlayer, didAccept invite: GKInvite) {
-//        // Present the view controller in the invitation state
-//        let viewController = GKMatchmakerViewController(invite: invite)
-//        viewController?.matchmakerDelegate = self
-//        let rootViewController = UIApplication.shared.windows.first!.rootViewController
-//        rootViewController?.present(viewController!, animated: true, completion: nil)
-//    }
+    func player(_ player: GKPlayer, didAccept invite: GKInvite) {
+        // Present the view controller in the invitation state
+        let viewController = GKMatchmakerViewController(invite: invite)
+        viewController?.matchmakerDelegate = self
+        let rootViewController = UIApplication.shared.windows.first!.rootViewController
+        rootViewController?.present(viewController!, animated: true, completion: nil)
+    }
     
     func matchmakerViewControllerWasCancelled(_ viewController: GKMatchmakerViewController) {
         viewController.dismiss(animated: true)

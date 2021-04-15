@@ -29,11 +29,12 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        gameModel = GameModel()
-        match?.delegate = self
+        print("Game view KONTROLER")
+        //gameModel = GameModel()
+        //match?.delegate = self
         
-        savePlayers()
-        updateUI()
+        //savePlayers()
+        //updateUI()
         
     }
     
