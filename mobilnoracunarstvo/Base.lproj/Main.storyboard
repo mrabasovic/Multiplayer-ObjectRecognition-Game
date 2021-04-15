@@ -21,6 +21,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Host Game"/>
                                 <connections>
+                                    <action selector="hostPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rJZ-jb-5Bn"/>
                                     <segue destination="6Yb-XJ-wcE" kind="show" identifier="hostujEkran" id="GYU-ZJ-WU5"/>
                                 </connections>
                             </button>
@@ -92,6 +93,7 @@
                     <navigationItem key="navigationItem" id="aE4-dK-5FQ"/>
                     <connections>
                         <outlet property="btnStart" destination="6ZH-kG-C8D" id="9re-fh-gRH"/>
+                        <segue destination="HCn-3h-L4c" kind="show" identifier="showGame" id="1my-th-9MT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rkR-DF-tAN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -103,7 +105,7 @@
             <objects>
                 <viewController storyboardIdentifier="showGame" id="HCn-3h-L4c" customClass="GameViewController" customModule="mobilnoracunarstvo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0fl-lh-rFy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMx-3a-i42">
