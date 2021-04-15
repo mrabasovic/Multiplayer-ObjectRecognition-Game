@@ -7,8 +7,11 @@
 
 import UIKit
 import GameKit
+import AVKit
+import Vision
 
-class GameViewController: UIViewController {
+
+class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
     
     
@@ -20,6 +23,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var imeProtivnik: UILabel!
     @IBOutlet weak var protivnikPogodjeni: UILabel!
     
+    @IBOutlet weak var predmetLabel: UILabel!
     private var gameModel: GameModel! {
             didSet {
                 updateUI()
@@ -36,7 +40,64 @@ class GameViewController: UIViewController {
         savePlayers()
         //updateUI()
         
+        // odavde krece za kameru
+        //vratiRandomRec()
+        
+        
+        
+        let captureSession = AVCaptureSession()
+        captureSession.sessionPreset = .photo // da bude cropovano na vrhu i dnu
+        
+        guard let captureDevice = AVCaptureDevice.default(for: .video) else{return}
+        guard let input = try? AVCaptureDeviceInput(device: captureDevice) else{return}
+        captureSession.addInput(input)
+        captureSession.startRunning()
+        
+        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        view.layer.addSublayer(previewLayer)
+        previewLayer.frame = view.frame
+        
+        
+        
+        let dataOutput = AVCaptureVideoDataOutput()
+        dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
+        captureSession.addOutput(dataOutput)
+        
+        
+        
+        
+        // ovde analiziramo sta nam kamera pokazuje
+        // ovaj vn image req handler je odgovoran za analiziranje slike koju mu prosledjujemo za parametar cgImage. To radis preko ovog .perform poziva
+        
+        //VNImageRequestHandler(cgImage: <#T##CGImage#>, options: <#T##[VNImageOption : Any]#>).perform(<#T##requests: [VNRequest]##[VNRequest]#>)
+        
+        
+        
+        
+        
     }
+    
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        
+        guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {return}
+        guard let model = try? VNCoreMLModel(for: Resnet50().model) else{return}
+        let request = VNCoreMLRequest(model: model) { (finishedReq, err) in
+            //print(finishedReq.results)
+            guard let results = finishedReq.results as? [VNClassificationObservation] else{return}
+            
+            guard let firstObservation = results.first else{return}
+            print(firstObservation.identifier, firstObservation.confidence)
+        }
+        try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
+    }
+    
+    let r = Reci()
+    
+    func vratiRandomRec(){
+        let randomInt = Int.random(in: 0...r.reci.count)
+        predmetLabel.text = r.reci[randomInt]
+    }
+    
     
     private func updateUI() {
         guard gameModel.igraci.count >= 2 else { return }

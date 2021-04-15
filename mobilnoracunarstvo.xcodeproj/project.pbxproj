@@ -14,6 +14,8 @@
 		B66D543A261BB0A200B1D708 /* GameCenterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66D5439261BB0A200B1D708 /* GameCenterHelper.swift */; };
 		B66D5442261CEC6B00B1D708 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66D5441261CEC6B00B1D708 /* GameViewController.swift */; };
 		B6B6A36A262850C500806E97 /* MultiSimTelefoniTablet.txt in Resources */ = {isa = PBXBuildFile; fileRef = B6B6A369262850C500806E97 /* MultiSimTelefoniTablet.txt */; };
+		B6B6A3732628CF3900806E97 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B6B6A3722628CF3900806E97 /* Resnet50.mlmodel */; };
+		B6B6A3762628CFC500806E97 /* Reci.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B6A3752628CFC500806E97 /* Reci.swift */; };
 		B6D8481826164DE800A36CF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D8481726164DE800A36CF5 /* AppDelegate.swift */; };
 		B6D8481A26164DE800A36CF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D8481926164DE800A36CF5 /* SceneDelegate.swift */; };
 		B6D8481C26164DE800A36CF5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D8481B26164DE800A36CF5 /* ViewController.swift */; };
@@ -35,6 +37,8 @@
 		B66D5441261CEC6B00B1D708 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		B6B6A369262850C500806E97 /* MultiSimTelefoniTablet.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = MultiSimTelefoniTablet.txt; sourceTree = "<group>"; };
 		B6B6A36C2628513300806E97 /* launch_multiple_simulators1.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = launch_multiple_simulators1.sh; sourceTree = "<group>"; };
+		B6B6A3722628CF3900806E97 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
+		B6B6A3752628CFC500806E97 /* Reci.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reci.swift; sourceTree = "<group>"; };
 		B6D8481426164DE800A36CF5 /* mobilnoracunarstvo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mobilnoracunarstvo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6D8481726164DE800A36CF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6D8481926164DE800A36CF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 				B65B0D47261D1E4E00AA2D2A /* GameModel.swift */,
 				B65B0D4A261D1E5D00AA2D2A /* Igrac.swift */,
 				B65B0D4D261D1EC400AA2D2A /* IgracStatus.swift */,
+				B6B6A3722628CF3900806E97 /* Resnet50.mlmodel */,
+				B6B6A3752628CFC500806E97 /* Reci.swift */,
 			);
 			path = mobilnoracunarstvo;
 			sourceTree = "<group>";
@@ -232,8 +238,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B66D5442261CEC6B00B1D708 /* GameViewController.swift in Sources */,
+				B6B6A3732628CF3900806E97 /* Resnet50.mlmodel in Sources */,
 				B66D543A261BB0A200B1D708 /* GameCenterHelper.swift in Sources */,
 				B6D8481C26164DE800A36CF5 /* ViewController.swift in Sources */,
+				B6B6A3762628CFC500806E97 /* Reci.swift in Sources */,
 				B6D848312616637B00A36CF5 /* HostViewController.swift in Sources */,
 				B65B0D4B261D1E5D00AA2D2A /* Igrac.swift in Sources */,
 				B6D8481826164DE800A36CF5 /* AppDelegate.swift in Sources */,
