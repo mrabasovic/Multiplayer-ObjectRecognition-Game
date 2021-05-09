@@ -23,8 +23,8 @@
 		B6D8482226164DE800A36CF5 /* mobilnoracunarstvo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6D8482026164DE800A36CF5 /* mobilnoracunarstvo.xcdatamodeld */; };
 		B6D8482426164DEB00A36CF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6D8482326164DEB00A36CF5 /* Assets.xcassets */; };
 		B6D8482726164DEB00A36CF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6D8482526164DEB00A36CF5 /* LaunchScreen.storyboard */; };
-		B6D848312616637B00A36CF5 /* HostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D848302616637B00A36CF5 /* HostViewController.swift */; };
 		B6D8483626167CBC00A36CF5 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D8483526167CBC00A36CF5 /* GameKit.framework */; };
+		B6FD9A492648877D0060BABE /* KrajViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FD9A482648877D0060BABE /* KrajViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,9 +48,9 @@
 		B6D8482326164DEB00A36CF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6D8482626164DEB00A36CF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B6D8482826164DEB00A36CF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B6D848302616637B00A36CF5 /* HostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostViewController.swift; sourceTree = "<group>"; };
 		B6D8483526167CBC00A36CF5 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		B6D8483726167CC200A36CF5 /* mobilnoracunarstvo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mobilnoracunarstvo.entitlements; sourceTree = "<group>"; };
+		B6FD9A482648877D0060BABE /* KrajViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KrajViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,8 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				B6D8481B26164DE800A36CF5 /* ViewController.swift */,
-				B6D848302616637B00A36CF5 /* HostViewController.swift */,
 				B66D5441261CEC6B00B1D708 /* GameViewController.swift */,
+				B6FD9A482648877D0060BABE /* KrajViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -242,12 +242,12 @@
 				B66D543A261BB0A200B1D708 /* GameCenterHelper.swift in Sources */,
 				B6D8481C26164DE800A36CF5 /* ViewController.swift in Sources */,
 				B6B6A3762628CFC500806E97 /* Reci.swift in Sources */,
-				B6D848312616637B00A36CF5 /* HostViewController.swift in Sources */,
 				B65B0D4B261D1E5D00AA2D2A /* Igrac.swift in Sources */,
 				B6D8481826164DE800A36CF5 /* AppDelegate.swift in Sources */,
 				B65B0D4E261D1EC400AA2D2A /* IgracStatus.swift in Sources */,
 				B65B0D48261D1E4E00AA2D2A /* GameModel.swift in Sources */,
 				B6D8481A26164DE800A36CF5 /* SceneDelegate.swift in Sources */,
+				B6FD9A492648877D0060BABE /* KrajViewController.swift in Sources */,
 				B6D8482226164DE800A36CF5 /* mobilnoracunarstvo.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

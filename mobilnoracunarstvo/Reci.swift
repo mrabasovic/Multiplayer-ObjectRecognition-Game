@@ -8,5 +8,6 @@
 import Foundation
 
 struct Reci{
-    let reci = ["Laptop", "Book", "Apple", "Pear", "Orange", "Mirror", "Door", "Window", "Dog", "Cat", "Table", "Shoe", "House", "Grass", "Carpet", "Towel", "Cow", "Horse", "Button", "Calendar"]
+//    let reci = ["Laptop", "Book", "Apple", "Pear", "Orange", "Mirror", "Door", "Window", "Dog", "Cat", "Table", "Shoe", "House", "Grass", "Carpet", "Towel", "Cow", "Horse", "Button", "Calendar", "mug"]
+    let reci = ["pomegranate", "orange", "water bottle"]
 }

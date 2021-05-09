@@ -10,6 +10,32 @@ import Foundation
 
 struct Igrac: Codable {
     var ime: String
-    //var status: IgracStatus = .idle
     var pogodjeni: Int = 0
+}
+
+enum PlayerType: String, Codable, CaseIterable {
+    case one
+    case two
+}
+
+extension PlayerType {
+    func enemyIndex() -> Int {
+        switch self {
+        case .one:
+            return 1
+        case .two:
+            return 0
+        }
+    }
+    
+    func index() -> Int {
+        switch self {
+        case .one:
+            return 0
+        case .two:
+            return 1
+        }
+    }
+    
+    
 }

@@ -74,12 +74,11 @@ final class GameCenterHelper: NSObject, GKLocalPlayerListener {
 
 
 extension GameCenterHelper: GKMatchmakerViewControllerDelegate {
-    func matchmakerViewController(_ viewController: GKMatchmakerViewController, didFind match: GKMatch) {
-        //viewController.dismiss(animated: true)    zakomentarisali to jer zbog toga nije hteo da otvori gameviewcontr tj govorio ono da nije u window hierarchy!
-        
     
-        delegate?.presentGame(match: match) 
-        print("matchmaker view controler")
+    // ova fja je crna tacka markerom
+    func matchmakerViewController(_ viewController: GKMatchmakerViewController, didFind match: GKMatch) {
+       
+        delegate?.presentGame(match: match)
     }
     
 //    func player(_ player: GKPlayer, didAccept invite: GKInvite) {
