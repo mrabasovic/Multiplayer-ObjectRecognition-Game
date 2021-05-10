@@ -22,9 +22,13 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     
     @IBOutlet weak var imeProtivnik: UILabel!
     @IBOutlet weak var protivnikPogodjeni: UILabel!
+    @IBOutlet weak var skipLabel: UILabel!
     
     @IBOutlet weak var predmetLabel: UILabel!
     @IBOutlet weak var pogadjaLabela: UILabel!
+    @IBOutlet weak var skipImage: UIImageView!
+    @IBOutlet weak var quitBtn: UIButton!
+    
     private var gameModel: GameModel! {
             didSet {
                 updateUI()
@@ -36,18 +40,18 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         super.viewDidLoad()
 
         
-        
-        print("Game view KONTROLER")
         gameModel = GameModel()
         match?.delegate = self
         
         savePlayers()
-        //updateUI()
         
         staviLabeleNaVrh()
         
         // pozivamo fju za vreme
         startOtpTimer()
+        
+        // fja za pritisak na skip dugme/sliku
+        pritisniSkip()
         
         // odavde krece za kameru
         predmetLabel.text =  vratiRandomRec()
@@ -103,7 +107,6 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                     self.recPogodjena()
                 }
             }
-            
         }
         
         try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
@@ -116,12 +119,35 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         return r.reci[randomInt]
     }
     
+    var skips = 3
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+
+        if(skips > 0){
+            skips -= 1
+            skipLabel.text = "Skips: \(skips)"
+            predmetLabel.text = vratiRandomRec()
+        }else{
+            skipImage.isUserInteractionEnabled = false
+        }
+        
+    }
+    
+    //MARK: - Fja za pritisni skip dugme
+    
+    func pritisniSkip(){
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        skipImage.isUserInteractionEnabled = true
+        skipImage.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
     // MARK: - Vreme 60s
+    
     var timer: Timer?
-    var totalTime = 60
+    var totalTime = 4
 
     private func startOtpTimer() {
-        self.totalTime = 60
+        self.totalTime = 4
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
 
@@ -149,26 +175,30 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     }
     
     func prekiniIgru(){
-        
+        // prikazuje krajVC na kraju igre
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+
+        let krajViewController = storyBoard.instantiateViewController(withIdentifier: "krajVC") as! KrajViewController
+        krajViewController.modalPresentationStyle = .fullScreen
+        self.present(krajViewController, animated:true, completion:nil)
     }
     
     //MARK: - updateUI
     
     private func updateUI() {
+        
         guard gameModel.igraci.count >= 2 else { return }
             
-        //vremeLabela.text = "\(gameModel.time)"
-        
         lokalniPogodjeni.text = String(gameModel.igraci[0].pogodjeni)
         
         imeProtivnik.text = gameModel.igraci[1].ime
         
         protivnikPogodjeni.text = String(gameModel.igraci[1].pogodjeni)
         
-        
     }
     
     //MARK: - VOICE CHAT
+    
         //The name of the channel to join -> to je parametar
     func voiceChat(withName name: String) -> GKVoiceChat?{
         return nil
@@ -176,6 +206,7 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     
     
     //MARK: - igra
+    
     // da labele budu na vrhu kamere tj da se vide
     func staviLabeleNaVrh(){
         vremeLabela.layer.zPosition = 1;
@@ -183,6 +214,10 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         imeProtivnik.layer.zPosition = 1;
         protivnikPogodjeni.layer.zPosition = 1;
         lokalniPogodjeni.layer.zPosition = 1;
+        skipLabel.layer.zPosition = 1;
+        self.view.bringSubviewToFront(skipImage)
+        quitBtn.layer.zPosition = 1;
+        
     }
     
     // send it to the other players when there is a change. We use the sendData method available in GKMatch, passing the GameModel converted to Data.
@@ -233,8 +268,27 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         predmetLabel.text =  vratiRandomRec()
         
     }
+    //MARK: - QUIT
+    
+    @IBAction func quitPressed(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Quit?", message: "Are you sure you want to quit the match?", preferredStyle: .alert)
+                                                                                // u {} zagradama je ono sto ce da
+                                                                                //  se desi kad pritisne yes
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { action in
+            // ako pritisne yes onda mu prikazuje novi ekran tj ekran KrajViewController
+            self.prekiniIgru()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+
+        self.present(alert, animated: true)
+        
+        
+    }
+    
     
 }
+
 
 //Na osnovu fje sendData -> When this information is received, the didReceive data method of the GKMatchDelegate is triggered and the other players will receive the GameModel. After receiving the new model, just replace the current one with the new one. This is just what is necessary to carry out the exchange of information that we mentioned earlier.
 extension GameViewController: GKMatchDelegate {
