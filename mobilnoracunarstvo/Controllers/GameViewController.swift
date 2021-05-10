@@ -60,7 +60,7 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         
         let captureSession = AVCaptureSession()
         //captureSession.sessionPreset = .photo // da bude cropovano na vrhu i dnu
-        
+       
         
         
         guard let captureDevice = AVCaptureDevice.default(for: .video) else{return}
@@ -71,7 +71,7 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         view.layer.addSublayer(previewLayer)
         previewLayer.frame = view.frame
-    
+        previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         
         
         let dataOutput = AVCaptureVideoDataOutput()
@@ -144,10 +144,10 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     // MARK: - Vreme 60s
     
     var timer: Timer?
-    var totalTime = 4
+    var totalTime = 60
 
     private func startOtpTimer() {
-        self.totalTime = 4
+        self.totalTime = 60
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
 
