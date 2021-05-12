@@ -10,7 +10,6 @@
 		B655FE6A26225206009900FC /* MultiSimConfig.txt in Resources */ = {isa = PBXBuildFile; fileRef = B655FE6926225206009900FC /* MultiSimConfig.txt */; };
 		B65B0D48261D1E4E00AA2D2A /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65B0D47261D1E4E00AA2D2A /* GameModel.swift */; };
 		B65B0D4B261D1E5D00AA2D2A /* Igrac.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65B0D4A261D1E5D00AA2D2A /* Igrac.swift */; };
-		B65B0D4E261D1EC400AA2D2A /* IgracStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65B0D4D261D1EC400AA2D2A /* IgracStatus.swift */; };
 		B66D543A261BB0A200B1D708 /* GameCenterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66D5439261BB0A200B1D708 /* GameCenterHelper.swift */; };
 		B66D5442261CEC6B00B1D708 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66D5441261CEC6B00B1D708 /* GameViewController.swift */; };
 		B6B6A36A262850C500806E97 /* MultiSimTelefoniTablet.txt in Resources */ = {isa = PBXBuildFile; fileRef = B6B6A369262850C500806E97 /* MultiSimTelefoniTablet.txt */; };
@@ -32,7 +31,6 @@
 		B655FE6C26225279009900FC /* launch_multiple_simulators.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = launch_multiple_simulators.sh; sourceTree = "<group>"; };
 		B65B0D47261D1E4E00AA2D2A /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		B65B0D4A261D1E5D00AA2D2A /* Igrac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Igrac.swift; sourceTree = "<group>"; };
-		B65B0D4D261D1EC400AA2D2A /* IgracStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IgracStatus.swift; sourceTree = "<group>"; };
 		B66D5439261BB0A200B1D708 /* GameCenterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterHelper.swift; sourceTree = "<group>"; };
 		B66D5441261CEC6B00B1D708 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		B6B6A369262850C500806E97 /* MultiSimTelefoniTablet.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = MultiSimTelefoniTablet.txt; sourceTree = "<group>"; };
@@ -101,7 +99,6 @@
 				B6D8482026164DE800A36CF5 /* mobilnoracunarstvo.xcdatamodeld */,
 				B65B0D47261D1E4E00AA2D2A /* GameModel.swift */,
 				B65B0D4A261D1E5D00AA2D2A /* Igrac.swift */,
-				B65B0D4D261D1EC400AA2D2A /* IgracStatus.swift */,
 				B6B6A3722628CF3900806E97 /* Resnet50.mlmodel */,
 				B6B6A3752628CFC500806E97 /* Reci.swift */,
 			);
@@ -244,7 +241,6 @@
 				B6B6A3762628CFC500806E97 /* Reci.swift in Sources */,
 				B65B0D4B261D1E5D00AA2D2A /* Igrac.swift in Sources */,
 				B6D8481826164DE800A36CF5 /* AppDelegate.swift in Sources */,
-				B65B0D4E261D1EC400AA2D2A /* IgracStatus.swift in Sources */,
 				B65B0D48261D1E4E00AA2D2A /* GameModel.swift in Sources */,
 				B6D8481A26164DE800A36CF5 /* SceneDelegate.swift in Sources */,
 				B6FD9A492648877D0060BABE /* KrajViewController.swift in Sources */,

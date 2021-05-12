@@ -39,8 +39,9 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         gameModel = GameModel()
+        
+        
         match?.delegate = self
         
         savePlayers()
@@ -69,6 +70,7 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         captureSession.startRunning()
         
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        // tri linije ispod su da bi kamera bila preko celog ekrana
         view.layer.addSublayer(previewLayer)
         previewLayer.frame = view.frame
         previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
@@ -105,6 +107,7 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                 if firstObservation.identifier == self.predmetLabel.text{
                     print("POGODIO")
                     self.recPogodjena()
+                    self.sendData()
                 }
             }
         }
@@ -118,6 +121,7 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         let randomInt = Int.random(in: 0...r.reci.count-1)
         return r.reci[randomInt]
     }
+    //MARK: - SKIP
     
     var skips = 3
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
@@ -144,10 +148,10 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     // MARK: - Vreme 60s
     
     var timer: Timer?
-    var totalTime = 60
+    var totalTime = 600
 
     private func startOtpTimer() {
-        self.totalTime = 60
+        self.totalTime = 600
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
 
@@ -183,20 +187,6 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         self.present(krajViewController, animated:true, completion:nil)
     }
     
-    //MARK: - updateUI
-    
-    private func updateUI() {
-        
-        guard gameModel.igraci.count >= 2 else { return }
-            
-        lokalniPogodjeni.text = String(gameModel.igraci[0].pogodjeni)
-        
-        imeProtivnik.text = gameModel.igraci[1].ime
-        
-        protivnikPogodjeni.text = String(gameModel.igraci[1].pogodjeni)
-        
-    }
-    
     //MARK: - VOICE CHAT
     
         //The name of the channel to join -> to je parametar
@@ -215,7 +205,10 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         protivnikPogodjeni.layer.zPosition = 1;
         lokalniPogodjeni.layer.zPosition = 1;
         skipLabel.layer.zPosition = 1;
+        
+        self.view.sendSubviewToBack(self.view)
         self.view.bringSubviewToFront(skipImage)
+        
         quitBtn.layer.zPosition = 1;
         
     }
@@ -234,40 +227,51 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     }
 
     private func savePlayers() {
-        guard let player2Name = match?.players.first?.displayName else { return }
-            
+        guard let protivnik = match?.players.first?.displayName else { return }
+
+        let igracLokalni = Igrac(ime: GKLocalPlayer.local.displayName, pogodjeni: 0)
+        let igracProtivnik = Igrac(ime: protivnik, pogodjeni: 0)
         
-        let player1 = Igrac(ime: GKLocalPlayer.local.displayName, pogodjeni: 0)
+        // prvo da bude na indeksu 0 protivnik
+        gameModel.igraci.insert(igracProtivnik, at: 0)
+        // a na indeksu 1 lokalni
+        gameModel.igraci.insert(igracLokalni, at: 1)
         
-        let player2 = Igrac(ime: player2Name, pogodjeni: 0)
-            
-        gameModel.igraci = [player1, player2]
-        print(gameModel.igraci)
-        gameModel.igraci.sort { (player1, player2) -> Bool in
-            player1.ime < player2.ime
-        }
-            
+        imeProtivnik.text = match?.players.first?.displayName
         sendData()
     }
     
-    private func getLocalPlayerType() -> PlayerType {
-        if gameModel.igraci.first?.ime == GKLocalPlayer.local.displayName {
-            return .one
-        } else {
-            return .two
+    // update UI fja se poziva svaki put kad se desi neka promena sa GameModel-om
+    private func updateUI() {
+        
+        guard gameModel.igraci.count >= 2 else { return }
+       
+        if gameModel.igraci[0].ime == imeProtivnik.text{
+            lokalniPogodjeni.text = String(gameModel.igraci[1].pogodjeni)
+            protivnikPogodjeni.text = String(gameModel.igraci[0].pogodjeni)
+        }else{
+            lokalniPogodjeni.text = String(gameModel.igraci[0].pogodjeni)
+            protivnikPogodjeni.text = String(gameModel.igraci[1].pogodjeni)
         }
     }
     
     private func recPogodjena(){
-        let localPlayer = getLocalPlayerType()
-                
-        gameModel.igraci[localPlayer.index()].pogodjeni += 1
+        // ako je igraci[0].ime sto je protivnik(tj onaj koji nije lokalni) == ime protivnika u labeli to znaci da je lokalni pogodio
+        if gameModel.igraci[0].ime == imeProtivnik.text {
+            // onda povecaj lokalnom pogodjene
+            gameModel.igraci[1].pogodjeni += 1
+            
+        }else{
+            // u suprotnom povecaj protivniku pogodjene
+            gameModel.igraci[0].pogodjeni += 1
+            
+        }
+        
         sendData()
-                
-        
         predmetLabel.text =  vratiRandomRec()
-        
     }
+    
+
     //MARK: - QUIT
     
     @IBAction func quitPressed(_ sender: UIButton) {

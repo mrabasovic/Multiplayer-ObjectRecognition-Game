@@ -6,11 +6,12 @@
 //
 
 import Foundation
-
+import GameKit
 
 struct Igrac: Codable {
     var ime: String
     var pogodjeni: Int = 0
+    //var protivnikPogodjeni : Int = 0
 }
 
 enum PlayerType: String, Codable, CaseIterable {
@@ -37,5 +38,6 @@ extension PlayerType {
         }
     }
     
+     
     
 }
