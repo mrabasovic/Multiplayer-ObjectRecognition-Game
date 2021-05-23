@@ -3,15 +3,24 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B631C455265AAA93001C64D1 /* Group 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B631C454265AAA93001C64D1 /* Group 1.jpg */; };
 		B655FE6A26225206009900FC /* MultiSimConfig.txt in Resources */ = {isa = PBXBuildFile; fileRef = B655FE6926225206009900FC /* MultiSimConfig.txt */; };
 		B65B0D48261D1E4E00AA2D2A /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65B0D47261D1E4E00AA2D2A /* GameModel.swift */; };
 		B65B0D4B261D1E5D00AA2D2A /* Igrac.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65B0D4A261D1E5D00AA2D2A /* Igrac.swift */; };
 		B66D543A261BB0A200B1D708 /* GameCenterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66D5439261BB0A200B1D708 /* GameCenterHelper.swift */; };
 		B66D5442261CEC6B00B1D708 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66D5441261CEC6B00B1D708 /* GameViewController.swift */; };
+		B6743334264FD90E009E0909 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6743333264FD90E009E0909 /* GoogleService-Info.plist */; };
+		B68413852656B47000534CDA /* muzika1.wav in Resources */ = {isa = PBXBuildFile; fileRef = B68413812656B46C00534CDA /* muzika1.wav */; };
+		B68413862656B47000534CDA /* muzika2.wav in Resources */ = {isa = PBXBuildFile; fileRef = B68413822656B46D00534CDA /* muzika2.wav */; };
+		B68413872656B47000534CDA /* muzika3.wav in Resources */ = {isa = PBXBuildFile; fileRef = B68413832656B46E00534CDA /* muzika3.wav */; };
+		B68413882656B47000534CDA /* muzika4.wav in Resources */ = {isa = PBXBuildFile; fileRef = B68413842656B47000534CDA /* muzika4.wav */; };
+		B684138D2656B47800534CDA /* pogodio1.wav in Resources */ = {isa = PBXBuildFile; fileRef = B684138A2656B47500534CDA /* pogodio1.wav */; };
+		B684138E2656B47800534CDA /* pogodio2.wav in Resources */ = {isa = PBXBuildFile; fileRef = B684138B2656B47600534CDA /* pogodio2.wav */; };
+		B684138F2656B47800534CDA /* pogodio3.wav in Resources */ = {isa = PBXBuildFile; fileRef = B684138C2656B47800534CDA /* pogodio3.wav */; };
 		B6B6A36A262850C500806E97 /* MultiSimTelefoniTablet.txt in Resources */ = {isa = PBXBuildFile; fileRef = B6B6A369262850C500806E97 /* MultiSimTelefoniTablet.txt */; };
 		B6B6A3732628CF3900806E97 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B6B6A3722628CF3900806E97 /* Resnet50.mlmodel */; };
 		B6B6A3762628CFC500806E97 /* Reci.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B6A3752628CFC500806E97 /* Reci.swift */; };
@@ -24,15 +33,26 @@
 		B6D8482726164DEB00A36CF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6D8482526164DEB00A36CF5 /* LaunchScreen.storyboard */; };
 		B6D8483626167CBC00A36CF5 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D8483526167CBC00A36CF5 /* GameKit.framework */; };
 		B6FD9A492648877D0060BABE /* KrajViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FD9A482648877D0060BABE /* KrajViewController.swift */; };
+		E5B3FF5347482CBC2B14BCF0 /* Pods_mobilnoracunarstvo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B684DBB0C5BE865B999C3C /* Pods_mobilnoracunarstvo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AAA81DB77C932C05CB4C4F80 /* Pods-mobilnoracunarstvo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobilnoracunarstvo.release.xcconfig"; path = "Target Support Files/Pods-mobilnoracunarstvo/Pods-mobilnoracunarstvo.release.xcconfig"; sourceTree = "<group>"; };
+		B631C454265AAA93001C64D1 /* Group 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Group 1.jpg"; sourceTree = "<group>"; };
 		B655FE6926225206009900FC /* MultiSimConfig.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = MultiSimConfig.txt; sourceTree = "<group>"; };
 		B655FE6C26225279009900FC /* launch_multiple_simulators.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = launch_multiple_simulators.sh; sourceTree = "<group>"; };
 		B65B0D47261D1E4E00AA2D2A /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		B65B0D4A261D1E5D00AA2D2A /* Igrac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Igrac.swift; sourceTree = "<group>"; };
 		B66D5439261BB0A200B1D708 /* GameCenterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterHelper.swift; sourceTree = "<group>"; };
 		B66D5441261CEC6B00B1D708 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		B6743333264FD90E009E0909 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B68413812656B46C00534CDA /* muzika1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = muzika1.wav; sourceTree = "<group>"; };
+		B68413822656B46D00534CDA /* muzika2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = muzika2.wav; sourceTree = "<group>"; };
+		B68413832656B46E00534CDA /* muzika3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = muzika3.wav; sourceTree = "<group>"; };
+		B68413842656B47000534CDA /* muzika4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = muzika4.wav; sourceTree = "<group>"; };
+		B684138A2656B47500534CDA /* pogodio1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pogodio1.wav; sourceTree = "<group>"; };
+		B684138B2656B47600534CDA /* pogodio2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pogodio2.wav; sourceTree = "<group>"; };
+		B684138C2656B47800534CDA /* pogodio3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pogodio3.wav; sourceTree = "<group>"; };
 		B6B6A369262850C500806E97 /* MultiSimTelefoniTablet.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = MultiSimTelefoniTablet.txt; sourceTree = "<group>"; };
 		B6B6A36C2628513300806E97 /* launch_multiple_simulators1.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = launch_multiple_simulators1.sh; sourceTree = "<group>"; };
 		B6B6A3722628CF3900806E97 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
@@ -49,6 +69,8 @@
 		B6D8483526167CBC00A36CF5 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		B6D8483726167CC200A36CF5 /* mobilnoracunarstvo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mobilnoracunarstvo.entitlements; sourceTree = "<group>"; };
 		B6FD9A482648877D0060BABE /* KrajViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KrajViewController.swift; sourceTree = "<group>"; };
+		B7B684DBB0C5BE865B999C3C /* Pods_mobilnoracunarstvo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mobilnoracunarstvo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEA2DDCBFE72CBF03E8BA3CC /* Pods-mobilnoracunarstvo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobilnoracunarstvo.debug.xcconfig"; path = "Target Support Files/Pods-mobilnoracunarstvo/Pods-mobilnoracunarstvo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +79,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6D8483626167CBC00A36CF5 /* GameKit.framework in Frameworks */,
+				E5B3FF5347482CBC2B14BCF0 /* Pods_mobilnoracunarstvo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9DA3F99A83D43CF9EAE61B64 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EEA2DDCBFE72CBF03E8BA3CC /* Pods-mobilnoracunarstvo.debug.xcconfig */,
+				AAA81DB77C932C05CB4C4F80 /* Pods-mobilnoracunarstvo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B68413802656B45C00534CDA /* zvukovi */ = {
+			isa = PBXGroup;
+			children = (
+				B68413812656B46C00534CDA /* muzika1.wav */,
+				B68413822656B46D00534CDA /* muzika2.wav */,
+				B68413832656B46E00534CDA /* muzika3.wav */,
+				B68413842656B47000534CDA /* muzika4.wav */,
+				B684138A2656B47500534CDA /* pogodio1.wav */,
+				B684138B2656B47600534CDA /* pogodio2.wav */,
+				B684138C2656B47800534CDA /* pogodio3.wav */,
+			);
+			path = zvukovi;
+			sourceTree = "<group>";
+		};
 		B6D8480B26164DE800A36CF5 = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +119,7 @@
 				B6D8481626164DE800A36CF5 /* mobilnoracunarstvo */,
 				B6D8481526164DE800A36CF5 /* Products */,
 				B6D8483426167CBC00A36CF5 /* Frameworks */,
+				9DA3F99A83D43CF9EAE61B64 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,15 +134,18 @@
 		B6D8481626164DE800A36CF5 /* mobilnoracunarstvo */ = {
 			isa = PBXGroup;
 			children = (
+				B68413802656B45C00534CDA /* zvukovi */,
 				B6D8483726167CC200A36CF5 /* mobilnoracunarstvo.entitlements */,
 				B6D8482F2616635900A36CF5 /* Controllers */,
 				B6D8481726164DE800A36CF5 /* AppDelegate.swift */,
 				B6D8481926164DE800A36CF5 /* SceneDelegate.swift */,
 				B66D5439261BB0A200B1D708 /* GameCenterHelper.swift */,
 				B6D8481D26164DE800A36CF5 /* Main.storyboard */,
+				B631C454265AAA93001C64D1 /* Group 1.jpg */,
 				B6D8482326164DEB00A36CF5 /* Assets.xcassets */,
 				B6D8482526164DEB00A36CF5 /* LaunchScreen.storyboard */,
 				B6D8482826164DEB00A36CF5 /* Info.plist */,
+				B6743333264FD90E009E0909 /* GoogleService-Info.plist */,
 				B6D8482026164DE800A36CF5 /* mobilnoracunarstvo.xcdatamodeld */,
 				B65B0D47261D1E4E00AA2D2A /* GameModel.swift */,
 				B65B0D4A261D1E5D00AA2D2A /* Igrac.swift */,
@@ -119,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				B6D8483526167CBC00A36CF5 /* GameKit.framework */,
+				B7B684DBB0C5BE865B999C3C /* Pods_mobilnoracunarstvo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -130,11 +181,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6D8482B26164DEB00A36CF5 /* Build configuration list for PBXNativeTarget "mobilnoracunarstvo" */;
 			buildPhases = (
+				93B2490B4C3F2AE88544B53D /* [CP] Check Pods Manifest.lock */,
 				B6D8481026164DE800A36CF5 /* Sources */,
 				B6D8481126164DE800A36CF5 /* Frameworks */,
 				B6D8481226164DE800A36CF5 /* Resources */,
 				B655FE6D262252E5009900FC /* ShellScript */,
 				B6B6A36D2628519500806E97 /* ShellScript */,
+				231262E2F6FECF8D41B11177 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -182,17 +235,65 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B684138D2656B47800534CDA /* pogodio1.wav in Resources */,
+				B68413852656B47000534CDA /* muzika1.wav in Resources */,
 				B6D8482726164DEB00A36CF5 /* LaunchScreen.storyboard in Resources */,
+				B68413882656B47000534CDA /* muzika4.wav in Resources */,
+				B68413862656B47000534CDA /* muzika2.wav in Resources */,
 				B6D8482426164DEB00A36CF5 /* Assets.xcassets in Resources */,
 				B655FE6A26225206009900FC /* MultiSimConfig.txt in Resources */,
 				B6B6A36A262850C500806E97 /* MultiSimTelefoniTablet.txt in Resources */,
+				B631C455265AAA93001C64D1 /* Group 1.jpg in Resources */,
 				B6D8481F26164DE800A36CF5 /* Main.storyboard in Resources */,
+				B684138F2656B47800534CDA /* pogodio3.wav in Resources */,
+				B68413872656B47000534CDA /* muzika3.wav in Resources */,
+				B6743334264FD90E009E0909 /* GoogleService-Info.plist in Resources */,
+				B684138E2656B47800534CDA /* pogodio2.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		231262E2F6FECF8D41B11177 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mobilnoracunarstvo/Pods-mobilnoracunarstvo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mobilnoracunarstvo/Pods-mobilnoracunarstvo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mobilnoracunarstvo/Pods-mobilnoracunarstvo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93B2490B4C3F2AE88544B53D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mobilnoracunarstvo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B655FE6D262252E5009900FC /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -388,6 +489,7 @@
 		};
 		B6D8482C26164DEB00A36CF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EEA2DDCBFE72CBF03E8BA3CC /* Pods-mobilnoracunarstvo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -410,6 +512,7 @@
 		};
 		B6D8482D26164DEB00A36CF5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AAA81DB77C932C05CB4C4F80 /* Pods-mobilnoracunarstvo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

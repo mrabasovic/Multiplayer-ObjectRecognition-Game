@@ -9,7 +9,7 @@ import Foundation
 
 struct Reci{
 
-    let reci = ["orange", "water bottle", "pomegranate", "analog clock"]
+    let reci = ["computer keyboard", "orange", "water bottle", "pomegranate", "analog clock", "backpack"]
     // "backpack"
     // "computer keyboard"
     // laptop

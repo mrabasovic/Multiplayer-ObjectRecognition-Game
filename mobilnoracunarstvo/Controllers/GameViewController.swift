@@ -9,7 +9,7 @@ import UIKit
 import GameKit
 import AVKit
 import Vision
-
+import AVFoundation
 
 class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
@@ -28,13 +28,16 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     @IBOutlet weak var pogadjaLabela: UILabel!
     @IBOutlet weak var skipImage: UIImageView!
     @IBOutlet weak var quitBtn: UIButton!
+    @IBOutlet weak var uputstvoLabel: UILabel!
     
-    private var gameModel: GameModel! {
+    public var gameModel: GameModel! {
             didSet {
                 updateUI()
             }
         }
    
+    
+    let captureSession = AVCaptureSession()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,12 +60,13 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         // odavde krece za kameru
         predmetLabel.text =  vratiRandomRec()
         
+        // muzika
+        playMusic()
         
         
-        let captureSession = AVCaptureSession()
         //captureSession.sessionPreset = .photo // da bude cropovano na vrhu i dnu
        
-        
+        //let captureSession = AVCaptureSession()
         
         guard let captureDevice = AVCaptureDevice.default(for: .video) else{return}
         guard let input = try? AVCaptureDeviceInput(device: captureDevice) else{return}
@@ -79,6 +83,7 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         let dataOutput = AVCaptureVideoDataOutput()
         dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
         captureSession.addOutput(dataOutput)
+        
         
         
         // ovde analiziramo sta nam kamera pokazuje
@@ -121,6 +126,32 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         let randomInt = Int.random(in: 0...r.reci.count-1)
         return r.reci[randomInt]
     }
+    
+    var player1: AVAudioPlayer!
+    
+    func playMusic(){
+        let number = Int.random(in: 1...4)
+        
+        switch number {
+        case 1:
+            let url = Bundle.main.url(forResource: "muzika1", withExtension: "wav")
+            self.player1 = try! AVAudioPlayer(contentsOf: url!)
+        case 2:
+            let url = Bundle.main.url(forResource: "muzika2", withExtension: "wav")
+            self.player1 = try! AVAudioPlayer(contentsOf: url!)
+        case 3:
+            let url = Bundle.main.url(forResource: "muzika3", withExtension: "wav")
+            self.player1 = try! AVAudioPlayer(contentsOf: url!)
+        case 4:
+            let url = Bundle.main.url(forResource: "muzika4", withExtension: "wav")
+            self.player1 = try! AVAudioPlayer(contentsOf: url!)
+        default:
+            print("greska sa zvukom")
+        }
+        // pusti zvuk
+        self.player1.play()
+    }
+    
     //MARK: - SKIP
     
     var skips = 3
@@ -148,10 +179,10 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     // MARK: - Vreme 60s
     
     var timer: Timer?
-    var totalTime = 600
+    var totalTime = 60
 
     private func startOtpTimer() {
-        self.totalTime = 600
+        self.totalTime = 60
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
 
@@ -175,17 +206,37 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
 
     func timeFormatted(_ totalSeconds: Int) -> String {
         let seconds: Int = totalSeconds
-        return String(format: "\(seconds)s")
+        return String(format: "\(seconds) s")
     }
     
+    
+    let kraj = KrajViewController()
+    
+    
     func prekiniIgru(){
+        
+        captureSession.stopRunning()    // da prekine da prepoznaje objekte
+        timer?.invalidate()             // i tajmer da prestane
+        
+        // prekini muziku
+        self.player.stop()
+        self.player1.stop()
+        
         // prikazuje krajVC na kraju igre
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
 
         let krajViewController = storyBoard.instantiateViewController(withIdentifier: "krajVC") as! KrajViewController
+        //saljemo podatke o rezultatima
+        krajViewController.lokalniRezultatVar = "\(gameModel.igraci[1].ime) : \(gameModel.igraci[1].pogodjeni)"
+        
+        krajViewController.protivnikRezultatVar = "\(gameModel.igraci[0].ime) : \(gameModel.igraci[0].pogodjeni)"
+        
         krajViewController.modalPresentationStyle = .fullScreen
         self.present(krajViewController, animated:true, completion:nil)
     }
+    
+    
+    
     
     //MARK: - VOICE CHAT
     
@@ -199,17 +250,27 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     
     // da labele budu na vrhu kamere tj da se vide
     func staviLabeleNaVrh(){
-        vremeLabela.layer.zPosition = 1;
-        predmetLabel.layer.zPosition = 1;
-        imeProtivnik.layer.zPosition = 1;
-        protivnikPogodjeni.layer.zPosition = 1;
-        lokalniPogodjeni.layer.zPosition = 1;
-        skipLabel.layer.zPosition = 1;
+        vremeLabela.layer.zPosition = 1
+        predmetLabel.layer.zPosition = 1
+        imeProtivnik.layer.zPosition = 1
+        protivnikPogodjeni.layer.zPosition = 1
+        lokalniPogodjeni.layer.zPosition = 1
+        skipLabel.layer.zPosition = 1
+        uputstvoLabel.layer.zPosition = 1
         
-        self.view.sendSubviewToBack(self.view)
-        self.view.bringSubviewToFront(skipImage)
+        //self.view.sendSubviewToBack(self.view)
+        quitBtn.layer.zPosition = 1
         
-        quitBtn.layer.zPosition = 1;
+        skipImage.layer.zPosition = 1
+        
+        // ovo je da uputstvoLabel nestane nakon 4 sekunde
+        uputstvoLabel.text = "Find this object"
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            //self.uputstvoLabel.isHidden = true
+            UIView.animate(withDuration: 2) {
+                self.uputstvoLabel.alpha = 0
+            }
+        }
         
     }
     
@@ -247,15 +308,20 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         guard gameModel.igraci.count >= 2 else { return }
        
         if gameModel.igraci[0].ime == imeProtivnik.text{
-            lokalniPogodjeni.text = String(gameModel.igraci[1].pogodjeni)
+            //lokalniPogodjeni.text = String(gameModel.igraci[1].pogodjeni)
+            lokalniPogodjeni.text = "You: \(gameModel.igraci[1].pogodjeni)"
             protivnikPogodjeni.text = String(gameModel.igraci[0].pogodjeni)
         }else{
-            lokalniPogodjeni.text = String(gameModel.igraci[0].pogodjeni)
+            //lokalniPogodjeni.text = String(gameModel.igraci[0].pogodjeni)
+            lokalniPogodjeni.text = "You: \(gameModel.igraci[0].pogodjeni)"
             protivnikPogodjeni.text = String(gameModel.igraci[1].pogodjeni)
         }
     }
     
     private func recPogodjena(){
+        
+        playSoundFoundObject()
+        
         // ako je igraci[0].ime sto je protivnik(tj onaj koji nije lokalni) == ime protivnika u labeli to znaci da je lokalni pogodio
         if gameModel.igraci[0].ime == imeProtivnik.text {
             // onda povecaj lokalnom pogodjene
@@ -266,11 +332,32 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
             gameModel.igraci[0].pogodjeni += 1
             
         }
-        
         sendData()
         predmetLabel.text =  vratiRandomRec()
     }
     
+    var player: AVAudioPlayer!
+    
+    func playSoundFoundObject(){
+        
+        let number = Int.random(in: 1...3)
+        
+        switch number {
+        case 1:
+            let url = Bundle.main.url(forResource: "pogodio1", withExtension: "wav")
+            self.player = try! AVAudioPlayer(contentsOf: url!)
+        case 2:
+            let url = Bundle.main.url(forResource: "pogodio2", withExtension: "wav")
+            self.player = try! AVAudioPlayer(contentsOf: url!)
+        case 3:
+            let url = Bundle.main.url(forResource: "pogodio3", withExtension: "wav")
+            self.player = try! AVAudioPlayer(contentsOf: url!)
+        default:
+            print("greska sa zvukom")
+        }
+        // pusti zvuk
+        self.player.play()
+    }
 
     //MARK: - QUIT
     
@@ -280,16 +367,33 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                                                                                 //  se desi kad pritisne yes
         alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { action in
             // ako pritisne yes onda mu prikazuje novi ekran tj ekran KrajViewController
-            self.prekiniIgru()
+             self.prekiniIgru()
+                
         }))
         
         alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
 
         self.present(alert, animated: true)
         
-        
     }
     
+    
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        var lokalniRezultat : String
+//        var protivnikRezultat : String
+//        
+//        if gameModel.igraci[0].ime == imeProtivnik.text{
+//            lokalniRezultat = "\(gameModel.igraci[1].ime) : \(gameModel.igraci[1].pogodjeni)"
+//            protivnikRezultat = "\(gameModel.igraci[0].ime) : \(gameModel.igraci[0].pogodjeni)"
+//        }else{
+//            lokalniRezultat = "\(gameModel.igraci[0].ime) : \(gameModel.igraci[0].pogodjeni)"
+//            protivnikRezultat = "\(gameModel.igraci[1].ime) : \(gameModel.igraci[1].pogodjeni)"
+//        }
+//        let destinationVC = segue.destination as! KrajViewController
+//        destinationVC.lokalniRezultat.text = lokalniRezultat
+//        destinationVC.protivnikRezultat.text = protivnikRezultat
+//    }
     
 }
 
@@ -300,4 +404,6 @@ extension GameViewController: GKMatchDelegate {
         guard let model = GameModel.decode(data: data) else { return }
         gameModel = model
     }
+    
+    
 }

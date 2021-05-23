@@ -7,33 +7,82 @@
 
 import UIKit
 import GameKit
+import AVKit
+import Vision
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var hostBtn: UIButton!
-    @IBOutlet weak var joinBtn: UIButton!
-    @IBOutlet weak var singleBtn: UIButton!
     
-
+    @IBOutlet weak var naslovLabela: UILabel!
+    @IBOutlet weak var opisLabela: UILabel!
+    @IBOutlet weak var hostBtn: UIButton!{
+        didSet{
+            hostBtn.layer.cornerRadius = 20
+        }
+    }
+    
+    @IBOutlet weak var singleBtn: UIButton!{
+        didSet{
+            singleBtn.layer.cornerRadius = 20
+        }
+    }
+    
+    @IBOutlet weak var settingsBtn: UIButton!{
+        didSet{
+            settingsBtn.layer.cornerRadius = 20
+        }
+    }
+    
     func srediDugmad(){
         hostBtn.backgroundColor = .clear
         hostBtn.layer.cornerRadius = 5
         hostBtn.layer.borderWidth = 1
-        hostBtn.layer.borderColor = UIColor.black.cgColor
-        //hostBtn.layer
+        hostBtn.layer.borderColor = UIColor.yellow.cgColor
+        hostBtn.layer.cornerRadius = 20
+        
+        
+        
+        view.bringSubviewToFront(naslovLabela)
+        view.bringSubviewToFront(hostBtn)
+        view.bringSubviewToFront(singleBtn)
+        view.bringSubviewToFront(settingsBtn)
+        view.bringSubviewToFront(opisLabela)
+        
+        opisLabela.text = "Detect as many objects as you can using your camera!"
+        opisLabela.numberOfLines = 0
     }
     
-    
+    let captureSession = AVCaptureSession()
     private var gameCenterHelper: GameCenterHelper!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //srediDugmad()
+        
         
         gameCenterHelper = GameCenterHelper()
         gameCenterHelper.delegate = self
         gameCenterHelper.authenticatePlayer()
+        
+        
+        guard let captureDevice = AVCaptureDevice.default(for: .video) else{return}
+        guard let input = try? AVCaptureDeviceInput(device: captureDevice) else{return}
+        captureSession.addInput(input)
+        captureSession.startRunning()
+        
+        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        // tri linije ispod su da bi kamera bila preko celog ekrana
+        view.layer.addSublayer(previewLayer)
+        previewLayer.frame = view.frame
+        previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        
+        let bojaView = UIView(frame: UIScreen.main.bounds)
+        bojaView.backgroundColor = UIColor.black
+        bojaView.layer.opacity = 0.6
+        self.view.addSubview(bojaView)
+        
+        srediDugmad()
+        
     }
 
     
