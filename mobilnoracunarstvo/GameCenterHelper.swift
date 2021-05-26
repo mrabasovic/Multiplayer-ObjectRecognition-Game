@@ -10,6 +10,7 @@ protocol GameCenterHelperDelegate: class {
 
 
 final class GameCenterHelper: NSObject, GKLocalPlayerListener {
+    
     weak var delegate: GameCenterHelperDelegate?
     
     private let minPlayers: Int = 2
@@ -104,4 +105,5 @@ extension GameCenterHelper: GKMatchmakerViewControllerDelegate {
     func matchmakerViewController(_ viewController: GKMatchmakerViewController, didFailWithError error: Error) {
         print("Matchmaker vc did fail with error: \(error.localizedDescription).")
     }
+  
 }

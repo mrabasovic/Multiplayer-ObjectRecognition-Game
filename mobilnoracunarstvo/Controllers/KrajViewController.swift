@@ -15,6 +15,7 @@ import FBSDKShareKit
 class KrajViewController: UIViewController, LoginButtonDelegate {
     
 
+    @IBOutlet weak var mainmenuBtn: UIButton!
     @IBOutlet weak var shareBtn: FBShareButton!
     
     @IBOutlet weak var lokalniRezultat: UILabel!
@@ -22,6 +23,7 @@ class KrajViewController: UIViewController, LoginButtonDelegate {
     
     @IBOutlet weak var loginButton: FBLoginButton!
 
+    @IBOutlet weak var matchHistoryBtn: UIButton!
     var protivnikRezultatVar = ""
     var lokalniRezultatVar = ""
     
@@ -48,6 +50,17 @@ class KrajViewController: UIViewController, LoginButtonDelegate {
         }
         
         shareBtn.shareContent = getLinkSharingContent()
+        
+    }
+    
+    @IBAction func mainmenuBtnTouched(_ sender: UIButton) {
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+
+        let pocetni = storyBoard.instantiateViewController(withIdentifier: "pocetniVC") as! ViewController
+        
+        pocetni.modalPresentationStyle = .fullScreen
+        self.present(pocetni, animated:true, completion:nil)
         
     }
     
@@ -125,7 +138,15 @@ class KrajViewController: UIViewController, LoginButtonDelegate {
     }
     
 
+    @IBAction func matchHistoryBtnTapped(_ sender: Any) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
 
+        let mecevi = storyBoard.instantiateViewController(withIdentifier: "meceviVC") as! MeceviTableViewController
+        
+        mecevi.modalPresentationStyle = .fullScreen
+        self.present(mecevi, animated:true, completion:nil)
+    }
+    
 }
 
 extension KrajViewController: SharingDelegate {

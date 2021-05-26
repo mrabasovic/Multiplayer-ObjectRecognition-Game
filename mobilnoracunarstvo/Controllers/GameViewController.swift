@@ -38,6 +38,7 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
    
     
     let captureSession = AVCaptureSession()
+    let cell = SettingsCell()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,9 +62,11 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         predmetLabel.text =  vratiRandomRec()
         
         // muzika
-        playMusic()
+        if  cell.defaults.bool(forKey: "musicButton") as Bool == true{
+            playMusic()
+        }
         
-        
+
         //captureSession.sessionPreset = .photo // da bude cropovano na vrhu i dnu
        
         //let captureSession = AVCaptureSession()
@@ -130,6 +133,7 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     var player1: AVAudioPlayer!
     
     func playMusic(){
+        
         let number = Int.random(in: 1...4)
         
         switch number {
@@ -219,7 +223,6 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         timer?.invalidate()             // i tajmer da prestane
         
         // prekini muziku
-        self.player.stop()
         self.player1.stop()
         
         // prikazuje krajVC na kraju igre
@@ -233,6 +236,8 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         
         krajViewController.modalPresentationStyle = .fullScreen
         self.present(krajViewController, animated:true, completion:nil)
+        
+        //sendData()
     }
     
     
@@ -320,7 +325,9 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     
     private func recPogodjena(){
         
-        playSoundFoundObject()
+        if cell.defaults.bool(forKey: "soundsButton") as Bool == true{
+            playSoundFoundObject()
+        }
         
         // ako je igraci[0].ime sto je protivnik(tj onaj koji nije lokalni) == ime protivnika u labeli to znaci da je lokalni pogodio
         if gameModel.igraci[0].ime == imeProtivnik.text {
