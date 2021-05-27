@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		B631C455265AAA93001C64D1 /* Group 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B631C454265AAA93001C64D1 /* Group 1.jpg */; };
+		B6416935265FF4730093D0C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6416934265FF4730093D0C0 /* GoogleService-Info.plist */; };
 		B655FE6A26225206009900FC /* MultiSimConfig.txt in Resources */ = {isa = PBXBuildFile; fileRef = B655FE6926225206009900FC /* MultiSimConfig.txt */; };
 		B65B0D48261D1E4E00AA2D2A /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65B0D47261D1E4E00AA2D2A /* GameModel.swift */; };
 		B65B0D4B261D1E5D00AA2D2A /* Igrac.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65B0D4A261D1E5D00AA2D2A /* Igrac.swift */; };
 		B66D543A261BB0A200B1D708 /* GameCenterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66D5439261BB0A200B1D708 /* GameCenterHelper.swift */; };
 		B66D5442261CEC6B00B1D708 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66D5441261CEC6B00B1D708 /* GameViewController.swift */; };
-		B6743334264FD90E009E0909 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6743333264FD90E009E0909 /* GoogleService-Info.plist */; };
 		B6804C96265DB4900093F494 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6804C95265DB4900093F494 /* SettingsViewController.swift */; };
 		B6804C9B265DB4F00093F494 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6804C9A265DB4F00093F494 /* SettingsCell.swift */; };
 		B6804C9E265DB5050093F494 /* UserInfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6804C9D265DB5050093F494 /* UserInfoHeader.swift */; };
@@ -46,13 +46,13 @@
 /* Begin PBXFileReference section */
 		AAA81DB77C932C05CB4C4F80 /* Pods-mobilnoracunarstvo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobilnoracunarstvo.release.xcconfig"; path = "Target Support Files/Pods-mobilnoracunarstvo/Pods-mobilnoracunarstvo.release.xcconfig"; sourceTree = "<group>"; };
 		B631C454265AAA93001C64D1 /* Group 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Group 1.jpg"; sourceTree = "<group>"; };
+		B6416934265FF4730093D0C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B655FE6926225206009900FC /* MultiSimConfig.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = MultiSimConfig.txt; sourceTree = "<group>"; };
 		B655FE6C26225279009900FC /* launch_multiple_simulators.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = launch_multiple_simulators.sh; sourceTree = "<group>"; };
 		B65B0D47261D1E4E00AA2D2A /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		B65B0D4A261D1E5D00AA2D2A /* Igrac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Igrac.swift; sourceTree = "<group>"; };
 		B66D5439261BB0A200B1D708 /* GameCenterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterHelper.swift; sourceTree = "<group>"; };
 		B66D5441261CEC6B00B1D708 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		B6743333264FD90E009E0909 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B6804C95265DB4900093F494 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B6804C9A265DB4F00093F494 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		B6804C9D265DB5050093F494 /* UserInfoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoHeader.swift; sourceTree = "<group>"; };
@@ -179,7 +179,7 @@
 				B6D8482326164DEB00A36CF5 /* Assets.xcassets */,
 				B6D8482526164DEB00A36CF5 /* LaunchScreen.storyboard */,
 				B6D8482826164DEB00A36CF5 /* Info.plist */,
-				B6743333264FD90E009E0909 /* GoogleService-Info.plist */,
+				B6416934265FF4730093D0C0 /* GoogleService-Info.plist */,
 				B6D8482026164DE800A36CF5 /* mobilnoracunarstvo.xcdatamodeld */,
 				B65B0D47261D1E4E00AA2D2A /* GameModel.swift */,
 				B65B0D4A261D1E5D00AA2D2A /* Igrac.swift */,
@@ -279,13 +279,13 @@
 				B68413862656B47000534CDA /* muzika2.wav in Resources */,
 				B6D8482426164DEB00A36CF5 /* Assets.xcassets in Resources */,
 				B655FE6A26225206009900FC /* MultiSimConfig.txt in Resources */,
+				B6416935265FF4730093D0C0 /* GoogleService-Info.plist in Resources */,
 				B6B6A36A262850C500806E97 /* MultiSimTelefoniTablet.txt in Resources */,
 				B631C455265AAA93001C64D1 /* Group 1.jpg in Resources */,
 				B6D8481F26164DE800A36CF5 /* Main.storyboard in Resources */,
 				B684138F2656B47800534CDA /* pogodio3.wav in Resources */,
 				B69F4B20265E80D200509C67 /* download.png in Resources */,
 				B68413872656B47000534CDA /* muzika3.wav in Resources */,
-				B6743334264FD90E009E0909 /* GoogleService-Info.plist in Resources */,
 				B684138E2656B47800534CDA /* pogodio2.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

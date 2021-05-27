@@ -183,10 +183,10 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     // MARK: - Vreme 60s
     
     var timer: Timer?
-    var totalTime = 60
+    var totalTime = 10
 
     private func startOtpTimer() {
-        self.totalTime = 60
+        self.totalTime = 10
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
 
@@ -233,6 +233,15 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         krajViewController.lokalniRezultatVar = "\(gameModel.igraci[1].ime) : \(gameModel.igraci[1].pogodjeni)"
         
         krajViewController.protivnikRezultatVar = "\(gameModel.igraci[0].ime) : \(gameModel.igraci[0].pogodjeni)"
+        
+        // da zna ko je pobednik
+        if gameModel.igraci[0].pogodjeni > gameModel.igraci[1].pogodjeni{
+            krajViewController.winner = gameModel.igraci[0].ime
+        }else if gameModel.igraci[1].pogodjeni > gameModel.igraci[0].pogodjeni{
+            krajViewController.winner = gameModel.igraci[1].ime
+        }else{
+            krajViewController.winner = "It's a tie!"
+        }
         
         krajViewController.modalPresentationStyle = .fullScreen
         self.present(krajViewController, animated:true, completion:nil)

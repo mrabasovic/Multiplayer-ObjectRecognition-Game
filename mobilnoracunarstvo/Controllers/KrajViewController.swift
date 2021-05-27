@@ -10,6 +10,7 @@ import FBSDKLoginKit
 import FBSDKCoreKit
 import FirebaseAuth
 import FBSDKShareKit
+import Firebase
 
 
 class KrajViewController: UIViewController, LoginButtonDelegate {
@@ -26,6 +27,9 @@ class KrajViewController: UIViewController, LoginButtonDelegate {
     @IBOutlet weak var matchHistoryBtn: UIButton!
     var protivnikRezultatVar = ""
     var lokalniRezultatVar = ""
+    var winner = ""
+    
+    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +55,19 @@ class KrajViewController: UIViewController, LoginButtonDelegate {
         
         shareBtn.shareContent = getLinkSharingContent()
         
+        //FirebaseApp.configure()
+        
+        ref = Database.database().reference().child("matches")
+        addMatch()
+        
+    }
+    
+    func addMatch(){
+        let key = ref.childByAutoId().key!
+        
+        let match = ["player1":lokalniRezultat.text! as String, "player2":protivnikRezultat.text! as String, "winner":winner as String]
+        print(match)
+        ref.child(key).setValue(match)
     }
     
     @IBAction func mainmenuBtnTouched(_ sender: UIButton) {

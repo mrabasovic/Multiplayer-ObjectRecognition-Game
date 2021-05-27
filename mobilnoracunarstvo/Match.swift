@@ -13,4 +13,15 @@ struct Match{
     var player2: String
     
     var winner: String
+    
+    
+
+//    func saveToFirebase() {
+//        let usersRef = myFirebase.child(users)
+//        let dict = ["name": self.myName, "food", self.myFood]
+//
+//        let thisUserRef = usersRef.childByAutoId()
+//        thisUserRef.setValue(dict)
+//    }
+    
 }
