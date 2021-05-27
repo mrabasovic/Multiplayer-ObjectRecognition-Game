@@ -22,7 +22,7 @@ class MeceviTableViewController: UITableViewController {
         super.viewDidLoad()
 
         tableView.separatorStyle = .none // da nema linija izmedju elemenata tabele
-        tableView.rowHeight = 150
+        tableView.rowHeight = 90
         navigationItem.backButtonDisplayMode = .default
         
         // sad za citanje iz baze
@@ -67,7 +67,9 @@ class MeceviTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "matchCell", for: indexPath)
         let match : Match
         match = matchHistory[indexPath.row]
-        cell.textLabel?.text = "\(match.player1 ?? "")\tvs\t\(match.player2 ?? "")\tWinner \(match.winner ?? "")"
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.text = "\(match.player1 ?? "")  vs  \(match.player2 ?? "")\nWinner - \(match.winner ?? "")"
+        cell.textLabel?.textAlignment = .center
         
         
         
