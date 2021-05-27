@@ -31,6 +31,10 @@ class KrajViewController: UIViewController, LoginButtonDelegate {
     
     var ref: DatabaseReference!
     
+    
+    
+    //let matchVC = MeceviTableViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -55,11 +59,11 @@ class KrajViewController: UIViewController, LoginButtonDelegate {
         
         shareBtn.shareContent = getLinkSharingContent()
         
-        //FirebaseApp.configure()
-        
+        // upisivanje u bazu
         ref = Database.database().reference().child("matches")
         addMatch()
         
+        // citanje iz baze je u mecevi vc
     }
     
     func addMatch(){
@@ -160,7 +164,7 @@ class KrajViewController: UIViewController, LoginButtonDelegate {
 
         let mecevi = storyBoard.instantiateViewController(withIdentifier: "meceviVC") as! MeceviTableViewController
         
-        mecevi.modalPresentationStyle = .fullScreen
+        //mecevi.modalPresentationStyle = .fullScreen
         self.present(mecevi, animated:true, completion:nil)
     }
     

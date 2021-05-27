@@ -7,18 +7,46 @@
 
 import UIKit
 import ChameleonFramework
+import Firebase
 
 class MeceviTableViewController: UITableViewController {
 
     
-    let matchArray = ["MladenR98 vs Nex-65 Winner: MladenR98", "Mix vs Nex225 Winner: Mix"]//[Match]()
+
+    @IBOutlet var tableMatches: UITableView!
+    
+    var ref: DatabaseReference!
+    var matchHistory = [Match]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.separatorStyle = .none // da nema linija izmedju elemenata tabele
-        tableView.rowHeight = 80
+        tableView.rowHeight = 150
         navigationItem.backButtonDisplayMode = .default
+        
+        // sad za citanje iz baze
+        ref = Database.database().reference().child("matches")
+        ref.observe(DataEventType.value) { (snapshot) in
+            if snapshot.childrenCount > 0{
+                self.matchHistory.removeAll()
+                
+                for matches in snapshot.children.allObjects as! [DataSnapshot]{
+                    let matchObject = matches.value as? [String : AnyObject]
+                    let player1 = matchObject?["player1"]
+                    let player2 = matchObject?["player2"]
+                    let winner = matchObject?["winner"]
+                    
+                    let match = Match(player1: player1 as! String?, player2: player2 as! String?, winner: winner as! String?)
+                    
+                    self.matchHistory.append(match)
+                }
+                
+                self.tableMatches.reloadData()
+            }
+        }
+        
+        
     }
 
     // MARK: - Table view data source
@@ -31,20 +59,24 @@ class MeceviTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // identifier je onaj identifier sto smo dali cell u main.storyboard
         
-        return matchArray.count // napravice onoliko redova u tabeli koliko mi imamo elemenata u nizu
+        return matchHistory.count // napravice onoliko redova u tabeli koliko mi imamo elemenata u nizu
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "matchCell", for: indexPath)
-        cell.textLabel?.text = matchArray[indexPath.row]
+        let match : Match
+        match = matchHistory[indexPath.row]
+        cell.textLabel?.text = "\(match.player1 ?? "")\tvs\t\(match.player2 ?? "")\tWinner \(match.winner ?? "")"
+        
+        
         
                         // potamnice za odredjen %. npr peti element od 10 njih ce da posvetli za 50% tj 5/10 = 50%
 //        if let color = FlatYellow().lighten(byPercentage: CGFloat(indexPath.row) / CGFloat(matchArray.count)){
 //
 //        }
         
-        if let color = UIColor.yellow.lighten(byPercentage: CGFloat(indexPath.row) / CGFloat(matchArray.count)){
+        if let color = UIColor.yellow.lighten(byPercentage: CGFloat(indexPath.row) / CGFloat(matchHistory.count)){
             cell.backgroundColor = color
             cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true) // ova linija je za tekst
         }

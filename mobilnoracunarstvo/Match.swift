@@ -9,19 +9,15 @@ import Foundation
 
 struct Match{
     
-    var player1: String
-    var player2: String
+    var player1: String?
+    var player2: String?
     
-    var winner: String
+    var winner: String?
     
     
-
-//    func saveToFirebase() {
-//        let usersRef = myFirebase.child(users)
-//        let dict = ["name": self.myName, "food", self.myFood]
-//
-//        let thisUserRef = usersRef.childByAutoId()
-//        thisUserRef.setValue(dict)
-//    }
-    
+    init(player1: String?, player2: String?, winner: String?) {
+        self.player1 = player1
+        self.player2 = player2
+        self.winner = winner
+    }
 }
