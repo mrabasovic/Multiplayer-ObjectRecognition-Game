@@ -39,6 +39,7 @@
 		B6D8482426164DEB00A36CF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6D8482326164DEB00A36CF5 /* Assets.xcassets */; };
 		B6D8482726164DEB00A36CF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6D8482526164DEB00A36CF5 /* LaunchScreen.storyboard */; };
 		B6D8483626167CBC00A36CF5 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D8483526167CBC00A36CF5 /* GameKit.framework */; };
+		B6E87E2C2662B39200D8C68E /* FindMeModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B6E87E2B2662B39200D8C68E /* FindMeModel.mlmodel */; };
 		B6EC51B2265B953A0005CFEC /* MeceviTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EC51B1265B953A0005CFEC /* MeceviTableViewController.swift */; };
 		B6EC51B5265B97650005CFEC /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EC51B4265B97650005CFEC /* Match.swift */; };
 		B6FD9A492648877D0060BABE /* KrajViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FD9A482648877D0060BABE /* KrajViewController.swift */; };
@@ -84,6 +85,7 @@
 		B6D8482826164DEB00A36CF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6D8483526167CBC00A36CF5 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		B6D8483726167CC200A36CF5 /* mobilnoracunarstvo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mobilnoracunarstvo.entitlements; sourceTree = "<group>"; };
+		B6E87E2B2662B39200D8C68E /* FindMeModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FindMeModel.mlmodel; sourceTree = "<group>"; };
 		B6EC51B1265B953A0005CFEC /* MeceviTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeceviTableViewController.swift; sourceTree = "<group>"; };
 		B6EC51B4265B97650005CFEC /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		B6FD9A482648877D0060BABE /* KrajViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KrajViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				B6D8482026164DE800A36CF5 /* mobilnoracunarstvo.xcdatamodeld */,
 				B65B0D47261D1E4E00AA2D2A /* GameModel.swift */,
 				B65B0D4A261D1E5D00AA2D2A /* Igrac.swift */,
+				B6E87E2B2662B39200D8C68E /* FindMeModel.mlmodel */,
 				B6B6A3722628CF3900806E97 /* Resnet50.mlmodel */,
 				B6B6A3752628CFC500806E97 /* Reci.swift */,
 				B6EC51B4265B97650005CFEC /* Match.swift */,
@@ -396,6 +399,7 @@
 				B6EC51B5265B97650005CFEC /* Match.swift in Sources */,
 				B6D8481A26164DE800A36CF5 /* SceneDelegate.swift in Sources */,
 				B6FD9A492648877D0060BABE /* KrajViewController.swift in Sources */,
+				B6E87E2C2662B39200D8C68E /* FindMeModel.mlmodel in Sources */,
 				B6D8482226164DE800A36CF5 /* mobilnoracunarstvo.xcdatamodeld in Sources */,
 				B6804C9B265DB4F00093F494 /* SettingsCell.swift in Sources */,
 			);

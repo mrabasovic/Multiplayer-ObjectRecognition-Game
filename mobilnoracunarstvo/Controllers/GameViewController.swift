@@ -101,7 +101,7 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         
         guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {return}
-        guard let model = try? VNCoreMLModel(for: Resnet50().model) else{return}
+        guard let model = try? VNCoreMLModel(for: FindMeModel().model) else{return}
         let request = VNCoreMLRequest(model: model) { (finishedReq, err) in
             //print(finishedReq.results)
             guard let results = finishedReq.results as? [VNClassificationObservation] else{return}
@@ -160,7 +160,7 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     
     //MARK: - SKIP
     
-    var skips = 3
+    var skips = 100
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
 
@@ -193,15 +193,15 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     // MARK: - Vreme 60s
     
     var timer: Timer?
-    var totalTime = 30
+    var totalTime = 10000
 
     private func startOtpTimer() {
-        self.totalTime = 30
+        self.totalTime = 10000
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
 
     @objc func updateTimer() {
-        print(self.totalTime)
+        
         self.vremeLabela.text = self.timeFormatted(self.totalTime) // will show timer
 
         //self.vremeLabela.text = "\(self.totalTime)s"
