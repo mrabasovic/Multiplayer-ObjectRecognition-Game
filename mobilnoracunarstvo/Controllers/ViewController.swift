@@ -21,11 +21,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var singleBtn: UIButton!{
-        didSet{
-            singleBtn.layer.cornerRadius = 20
-        }
-    }
+    
     
     @IBOutlet weak var settingsBtn: UIButton!{
         didSet{
@@ -34,22 +30,35 @@ class ViewController: UIViewController {
     }
     
     func srediDugmad(){
-        hostBtn.backgroundColor = .clear
-        hostBtn.layer.cornerRadius = 5
-        hostBtn.layer.borderWidth = 1
-        hostBtn.layer.borderColor = UIColor.yellow.cgColor
+//        hostBtn.backgroundColor = .clear
+//        hostBtn.layer.cornerRadius = 5
+//        hostBtn.layer.borderWidth = 1
+//        hostBtn.layer.borderColor = UIColor.yellow.cgColor
         hostBtn.layer.cornerRadius = 20
         
+//
         
         
         view.bringSubviewToFront(naslovLabela)
         view.bringSubviewToFront(hostBtn)
-        view.bringSubviewToFront(singleBtn)
+        
         view.bringSubviewToFront(settingsBtn)
         view.bringSubviewToFront(opisLabela)
         
-        opisLabela.text = "Detect as many objects as you can using your camera!"
-        opisLabela.numberOfLines = 0
+        opisLabela.text = "Detect as many objects as you can with your camera!"
+      
+        opisLabela.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        
+        
+        
+        
+        hostBtn.translatesAutoresizingMaskIntoConstraints = false
+        hostBtn.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        hostBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        settingsBtn.translatesAutoresizingMaskIntoConstraints = false
+        settingsBtn.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        settingsBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     let captureSession = AVCaptureSession()

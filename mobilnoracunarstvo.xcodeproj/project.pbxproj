@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B631C455265AAA93001C64D1 /* Group 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B631C454265AAA93001C64D1 /* Group 1.jpg */; };
 		B6416935265FF4730093D0C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6416934265FF4730093D0C0 /* GoogleService-Info.plist */; };
+		B6416939266257F90093D0C0 /* kraj.wav in Resources */ = {isa = PBXBuildFile; fileRef = B6416938266257F90093D0C0 /* kraj.wav */; };
+		B641693C266258000093D0C0 /* skip.wav in Resources */ = {isa = PBXBuildFile; fileRef = B641693B266258000093D0C0 /* skip.wav */; };
 		B655FE6A26225206009900FC /* MultiSimConfig.txt in Resources */ = {isa = PBXBuildFile; fileRef = B655FE6926225206009900FC /* MultiSimConfig.txt */; };
 		B65B0D48261D1E4E00AA2D2A /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65B0D47261D1E4E00AA2D2A /* GameModel.swift */; };
 		B65B0D4B261D1E5D00AA2D2A /* Igrac.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65B0D4A261D1E5D00AA2D2A /* Igrac.swift */; };
@@ -47,6 +49,8 @@
 		AAA81DB77C932C05CB4C4F80 /* Pods-mobilnoracunarstvo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobilnoracunarstvo.release.xcconfig"; path = "Target Support Files/Pods-mobilnoracunarstvo/Pods-mobilnoracunarstvo.release.xcconfig"; sourceTree = "<group>"; };
 		B631C454265AAA93001C64D1 /* Group 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Group 1.jpg"; sourceTree = "<group>"; };
 		B6416934265FF4730093D0C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B6416938266257F90093D0C0 /* kraj.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = kraj.wav; sourceTree = "<group>"; };
+		B641693B266258000093D0C0 /* skip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = skip.wav; sourceTree = "<group>"; };
 		B655FE6926225206009900FC /* MultiSimConfig.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = MultiSimConfig.txt; sourceTree = "<group>"; };
 		B655FE6C26225279009900FC /* launch_multiple_simulators.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = launch_multiple_simulators.sh; sourceTree = "<group>"; };
 		B65B0D47261D1E4E00AA2D2A /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
@@ -136,6 +140,8 @@
 				B684138A2656B47500534CDA /* pogodio1.wav */,
 				B684138B2656B47600534CDA /* pogodio2.wav */,
 				B684138C2656B47800534CDA /* pogodio3.wav */,
+				B641693B266258000093D0C0 /* skip.wav */,
+				B6416938266257F90093D0C0 /* kraj.wav */,
 			);
 			path = zvukovi;
 			sourceTree = "<group>";
@@ -284,6 +290,8 @@
 				B631C455265AAA93001C64D1 /* Group 1.jpg in Resources */,
 				B6D8481F26164DE800A36CF5 /* Main.storyboard in Resources */,
 				B684138F2656B47800534CDA /* pogodio3.wav in Resources */,
+				B641693C266258000093D0C0 /* skip.wav in Resources */,
+				B6416939266257F90093D0C0 /* kraj.wav in Resources */,
 				B69F4B20265E80D200509C67 /* download.png in Resources */,
 				B68413872656B47000534CDA /* muzika3.wav in Resources */,
 				B684138E2656B47800534CDA /* pogodio2.wav in Resources */,

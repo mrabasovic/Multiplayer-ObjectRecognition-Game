@@ -11,7 +11,8 @@ import FBSDKCoreKit
 import FirebaseAuth
 import FBSDKShareKit
 import Firebase
-
+import AVFoundation
+import Vision
 
 class KrajViewController: UIViewController, LoginButtonDelegate {
     
@@ -23,7 +24,8 @@ class KrajViewController: UIViewController, LoginButtonDelegate {
     @IBOutlet weak var protivnikRezultat: UILabel!
     
     @IBOutlet weak var loginButton: FBLoginButton!
-
+    @IBOutlet weak var gameResultsLabel: UILabel!
+    
     @IBOutlet weak var matchHistoryBtn: UIButton!
     var protivnikRezultatVar = ""
     var lokalniRezultatVar = ""
@@ -31,9 +33,22 @@ class KrajViewController: UIViewController, LoginButtonDelegate {
     
     var ref: DatabaseReference!
     
-    
+    let cell = SettingsCell()
     
     //let matchVC = MeceviTableViewController()
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        setGradientBackground()
+//    }
+    
+    let captureSession = AVCaptureSession()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if  cell.defaults.bool(forKey: "musicButton") as Bool == true{
+            playSound()
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +79,12 @@ class KrajViewController: UIViewController, LoginButtonDelegate {
         addMatch()
         
         // citanje iz baze je u mecevi vc
+        
+        // POZADINA
+        gradientBackground()
+        
+        
+        
     }
     
     func addMatch(){
@@ -72,6 +93,15 @@ class KrajViewController: UIViewController, LoginButtonDelegate {
         let match = ["player1":lokalniRezultat.text! as String, "player2":protivnikRezultat.text! as String, "winner":winner as String]
         print(match)
         ref.child(key).setValue(match)
+    }
+    
+    var player: AVAudioPlayer!
+    func playSound(){
+        
+        let url = Bundle.main.url(forResource: "kraj", withExtension: "wav")
+        player = try! AVAudioPlayer(contentsOf: url!)
+        
+        player.play()
     }
     
     @IBAction func mainmenuBtnTouched(_ sender: UIButton) {
@@ -166,6 +196,63 @@ class KrajViewController: UIViewController, LoginButtonDelegate {
         
         //mecevi.modalPresentationStyle = .fullScreen
         self.present(mecevi, animated:true, completion:nil)
+    }
+    
+    
+    func gradientBackground(){
+        guard let captureDevice = AVCaptureDevice.default(for: .video) else{return}
+        guard let input = try? AVCaptureDeviceInput(device: captureDevice) else{return}
+        captureSession.addInput(input)
+        captureSession.startRunning()
+        
+        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        // tri linije ispod su da bi kamera bila preko celog ekrana
+        view.layer.addSublayer(previewLayer)
+        previewLayer.frame = view.frame
+        previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        
+        
+        let initialColor = UIColor.yellow // our initial color
+        let finalColor = initialColor.withAlphaComponent(0.0) // our initial color with transparency
+                
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.type = .axial
+        gradientLayer.colors = [initialColor.cgColor, finalColor.cgColor]
+        gradientLayer.locations = [0, 1]
+        gradientLayer.frame = view.bounds
+        view.layer.addSublayer(gradientLayer)
+        
+        protivnikRezultat.layer.zPosition = 1
+        lokalniRezultat.layer.zPosition = 1
+        mainmenuBtn.layer.zPosition = 1
+        matchHistoryBtn.layer.zPosition = 1
+        shareBtn.layer.zPosition = 1
+        
+        mainmenuBtn.layer.cornerRadius = 20
+        shareBtn.layer.cornerRadius = 20
+        matchHistoryBtn.layer.cornerRadius = 20
+        
+        mainmenuBtn.backgroundColor = UIColor.yellow
+        matchHistoryBtn.backgroundColor = UIColor.yellow
+        
+        mainmenuBtn.translatesAutoresizingMaskIntoConstraints = false
+        mainmenuBtn.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        mainmenuBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        matchHistoryBtn.translatesAutoresizingMaskIntoConstraints = false
+        matchHistoryBtn.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        matchHistoryBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        gameResultsLabel.layer.zPosition = 1
+        
+        shareBtn.translatesAutoresizingMaskIntoConstraints = false
+        shareBtn.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        shareBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        shareBtn.titleLabel?.textAlignment = .center
+        let buttonText = NSAttributedString(string: "Share your results!")
+        shareBtn.layer.cornerRadius = 20
+        shareBtn.contentVerticalAlignment = .center
+        shareBtn.setAttributedTitle(buttonText, for: .normal)
     }
     
 }

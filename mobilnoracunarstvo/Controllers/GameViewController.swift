@@ -59,7 +59,7 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         pritisniSkip()
         
         // odavde krece za kameru
-        predmetLabel.text =  vratiRandomRec()
+        predmetLabel.text =  r.vratiRandomRec()
         
         // muzika
         if  cell.defaults.bool(forKey: "musicButton") as Bool == true{
@@ -123,12 +123,14 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
     }
     
-    let r = Reci()
+    var r = Reci()
     
-    func vratiRandomRec() -> String{
-        let randomInt = Int.random(in: 0...r.reci.count-1)
-        return r.reci[randomInt]
-    }
+//    func vratiRandomRec() -> String{
+//        let randomInt = Int.random(in: 0...r.reci.count-1)
+//        return r.reci[randomInt]
+//        
+//        r.reci.shuffle()
+//    }
     
     var player1: AVAudioPlayer!
     
@@ -163,9 +165,15 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     {
 
         if(skips > 0){
+            if  cell.defaults.bool(forKey: "soundsButton") as Bool == true{
+                let url = Bundle.main.url(forResource: "skip", withExtension: "wav")
+                player = try! AVAudioPlayer(contentsOf: url!)
+                player.play()
+            }
+           
             skips -= 1
             skipLabel.text = "Skips: \(skips)"
-            predmetLabel.text = vratiRandomRec()
+            predmetLabel.text = r.vratiRandomRec()
         }else{
             skipImage.isUserInteractionEnabled = false
         }
@@ -178,15 +186,17 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         skipImage.isUserInteractionEnabled = true
         skipImage.addGestureRecognizer(tapGestureRecognizer)
+        
+        
     }
     
     // MARK: - Vreme 60s
     
     var timer: Timer?
-    var totalTime = 10
+    var totalTime = 30
 
     private func startOtpTimer() {
-        self.totalTime = 10
+        self.totalTime = 30
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
 
@@ -205,6 +215,10 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                 self.timer = nil
             }
             prekiniIgru()
+        }
+        if(totalTime <= 5){
+            vremeLabela.textColor = .red
+            vremeLabela.font = UIFont.systemFont(ofSize: 20)
         }
     }
 
@@ -349,7 +363,7 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
             
         }
         sendData()
-        predmetLabel.text =  vratiRandomRec()
+        predmetLabel.text =  r.vratiRandomRec()
     }
     
     var player: AVAudioPlayer!
