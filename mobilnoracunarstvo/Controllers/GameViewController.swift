@@ -160,7 +160,7 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     
     //MARK: - SKIP
     
-    var skips = 100
+    var skips = 3
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
 
@@ -193,10 +193,10 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     // MARK: - Vreme 60s
     
     var timer: Timer?
-    var totalTime = 10000
+    var totalTime = 60
 
     private func startOtpTimer() {
-        self.totalTime = 10000
+        self.totalTime = 60
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
 
