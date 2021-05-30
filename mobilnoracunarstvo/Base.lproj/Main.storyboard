@@ -33,7 +33,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iv3-3e-413">
-                                <rect key="frame" x="156" y="480.5" width="102" height="40"/>
+                                <rect key="frame" x="156" y="372.5" width="102" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.99639394339999998" blue="0.1267257711" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Multiplayer">
@@ -45,7 +45,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWu-lf-kbx">
-                                <rect key="frame" x="170" y="570.5" width="74" height="40"/>
+                                <rect key="frame" x="170" y="462.5" width="74" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.99639394339999998" blue="0.1267257711" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Settings">
@@ -56,13 +56,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find Me" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Tc-vT-nK9">
-                                <rect key="frame" x="114" y="272" width="186.5" height="68.5"/>
+                                <rect key="frame" x="114" y="164" width="186.5" height="68.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="50"/>
                                 <color key="textColor" red="1" green="0.99639394339999998" blue="0.1267257711" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEq-ix-7K3">
-                                <rect key="frame" x="186.5" y="791.5" width="41.5" height="23.5"/>
+                                <rect key="frame" x="186.5" y="683.5" width="41.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.99639394339999998" blue="0.1267257711" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -77,7 +77,7 @@
                             <constraint firstItem="iv3-3e-413" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ymq-Qn-qNb"/>
                             <constraint firstItem="BEq-ix-7K3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cUb-zL-IRn"/>
                             <constraint firstItem="tWu-lf-kbx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="g8F-wT-Rxg"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BEq-ix-7K3" secondAttribute="bottom" constant="47" id="suv-37-Awk"/>
+                            <constraint firstItem="4Tc-vT-nK9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="120" id="ltE-Z9-Yc3"/>
                             <constraint firstItem="4Tc-vT-nK9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vyS-Ih-4DF"/>
                         </constraints>
                     </view>
@@ -118,7 +118,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWx-Wb-qjZ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWx-Wb-qjZ">
                                 <rect key="frame" x="30" y="823.5" width="42" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -231,13 +231,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0bw-if-l6G" customClass="FBSDKShareButton">
-                                <rect key="frame" x="181" y="440.5" width="52" height="36"/>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
+                                <rect key="frame" x="176.5" y="440.5" width="61" height="40"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Button"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQt-v6-POs">
-                                <rect key="frame" x="163.5" y="536.5" width="87" height="36"/>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
+                                <rect key="frame" x="156" y="540.5" width="102" height="40"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Main Menu">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -246,8 +246,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jsy-le-vSX">
-                                <rect key="frame" x="153.5" y="602.5" width="107" height="36"/>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
+                                <rect key="frame" x="144" y="610.5" width="126" height="40"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Match History">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>

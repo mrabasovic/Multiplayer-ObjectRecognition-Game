@@ -175,6 +175,7 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
             skipLabel.text = "Skips: \(skips)"
             predmetLabel.text = r.vratiRandomRec()
         }else{
+            skipImage.tintColor = UIColor.gray
             skipImage.isUserInteractionEnabled = false
         }
         
@@ -237,7 +238,10 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         timer?.invalidate()             // i tajmer da prestane
         
         // prekini muziku
-        self.player1.stop()
+        if player1 != nil{
+            self.player1.stop()
+        }
+        
         
         // prikazuje krajVC na kraju igre
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
@@ -286,10 +290,15 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         skipLabel.layer.zPosition = 1
         uputstvoLabel.layer.zPosition = 1
         
+        lokalniPogodjeni.textAlignment = .center
+        
         //self.view.sendSubviewToBack(self.view)
         quitBtn.layer.zPosition = 1
         
         skipImage.layer.zPosition = 1
+        skipImage.widthAnchor.constraint(equalToConstant: 42).isActive = true
+        skipImage.heightAnchor.constraint(equalToConstant: 43).isActive = true
+        
         
         // ovo je da uputstvoLabel nestane nakon 4 sekunde
         uputstvoLabel.text = "Find this object"
