@@ -117,7 +117,7 @@ class KrajViewController: UIViewController, LoginButtonDelegate {
     
     func getLinkSharingContent() -> SharingContent {
       let shareLinkContent = ShareLinkContent()
-      shareLinkContent.contentURL = URL(string: "https://apps.apple.com/us/app/facebook/id284882215")!
+      shareLinkContent.contentURL = URL(string: "https://apps.apple.com/us/app/find-me-camera-hunt-game/id1561633127")!
       
       // Optional:
       shareLinkContent.hashtag = Hashtag("#FindMe")
