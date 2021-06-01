@@ -416,24 +416,7 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         
     }
     
-    
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        var lokalniRezultat : String
-//        var protivnikRezultat : String
-//        
-//        if gameModel.igraci[0].ime == imeProtivnik.text{
-//            lokalniRezultat = "\(gameModel.igraci[1].ime) : \(gameModel.igraci[1].pogodjeni)"
-//            protivnikRezultat = "\(gameModel.igraci[0].ime) : \(gameModel.igraci[0].pogodjeni)"
-//        }else{
-//            lokalniRezultat = "\(gameModel.igraci[0].ime) : \(gameModel.igraci[0].pogodjeni)"
-//            protivnikRezultat = "\(gameModel.igraci[1].ime) : \(gameModel.igraci[1].pogodjeni)"
-//        }
-//        let destinationVC = segue.destination as! KrajViewController
-//        destinationVC.lokalniRezultat.text = lokalniRezultat
-//        destinationVC.protivnikRezultat.text = protivnikRezultat
-//    }
-    
+
 }
 
 
