@@ -242,15 +242,33 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
             self.player1.stop()
         }
         
-        
         // prikazuje krajVC na kraju igre
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
 
         let krajViewController = storyBoard.instantiateViewController(withIdentifier: "krajVC") as! KrajViewController
-        //saljemo podatke o rezultatima
-        krajViewController.lokalniRezultatVar = "\(gameModel.igraci[1].ime) : \(gameModel.igraci[1].pogodjeni)"
         
-        krajViewController.protivnikRezultatVar = "\(gameModel.igraci[0].ime) : \(gameModel.igraci[0].pogodjeni)"
+        
+        var nizPoena : [Int] = []
+        guard let protivnik = match?.players.first?.displayName else { return }
+        let igracLokalni = Igrac(ime: GKLocalPlayer.local.displayName, pogodjeni: 0)
+        let igracProtivnik = Igrac(ime: protivnik, pogodjeni: 0)
+        
+        
+        if igracProtivnik.ime == gameModel.igraci[0].ime{
+            nizPoena.insert(gameModel.igraci[0].pogodjeni, at: 0)   // poeni protivnika
+            nizPoena.insert(gameModel.igraci[1].pogodjeni, at: 1)   // poeni lokalnog
+        }else{
+            nizPoena.insert(gameModel.igraci[1].pogodjeni, at: 0)   // poeni protivnika
+            nizPoena.insert(gameModel.igraci[0].pogodjeni, at: 1)   // poeni lokalnog
+        }
+        
+        //saljemo podatke o rezultatima
+        krajViewController.lokalniRezultatVar = "\(nizPoena[1])"
+        
+        krajViewController.protivnikRezultatVar = "\(nizPoena[0])"
+        
+        //cell.defaults.setValue(nizPoena[0], forKey: "player1Score")
+        //cell.defaults.setValue(nizPoena[1], forKey: "player2Score")
         
         // da zna ko je pobednik
         if gameModel.igraci[0].pogodjeni > gameModel.igraci[1].pogodjeni{
@@ -324,9 +342,11 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         }
     }
 
+    let defaults = UserDefaults.standard
+    
     private func savePlayers() {
         guard let protivnik = match?.players.first?.displayName else { return }
-
+        
         let igracLokalni = Igrac(ime: GKLocalPlayer.local.displayName, pogodjeni: 0)
         let igracProtivnik = Igrac(ime: protivnik, pogodjeni: 0)
         
@@ -334,6 +354,10 @@ class GameViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         gameModel.igraci.insert(igracProtivnik, at: 0)
         // a na indeksu 1 lokalni
         gameModel.igraci.insert(igracLokalni, at: 1)
+        
+        // koristim user defaults da bih u mecevivc mogao da ih procitam a da ne moram da saljem izmedju vc
+        defaults.setValue(gameModel.igraci[0].ime, forKey: "player1")
+        defaults.setValue(gameModel.igraci[1].ime, forKey: "player2")
         
         imeProtivnik.text = match?.players.first?.displayName
         sendData()

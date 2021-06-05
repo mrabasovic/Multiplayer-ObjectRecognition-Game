@@ -47,6 +47,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         cell.switchControl.tag = indexPath.row
         
+        
+        
         // ovo ispod je da kad ugasimo aplikaciju da opet ostane onako kako je pritisnuto
         switch cell.switchControl.tag {
         case 0: cell.switchControl.isOn = setCell.defaults.bool(forKey: "soundsButton")

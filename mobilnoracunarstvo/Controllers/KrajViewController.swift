@@ -35,11 +35,7 @@ class KrajViewController: UIViewController, LoginButtonDelegate {
     
     let cell = SettingsCell()
     
-    //let matchVC = MeceviTableViewController()
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        setGradientBackground()
-//    }
     
     let captureSession = AVCaptureSession()
     
@@ -83,15 +79,17 @@ class KrajViewController: UIViewController, LoginButtonDelegate {
         // POZADINA
         gradientBackground()
         
-        
-        
     }
     
     func addMatch(){
         let key = ref.childByAutoId().key!
         
-        let match = ["player1":lokalniRezultat.text! as String, "player2":protivnikRezultat.text! as String, "winner":winner as String]
-        print(match)
+        let match = ["player1":cell.defaults.string(forKey: "player1")! as String,
+                     "player1Score" : protivnikRezultatVar,
+                     "player2":cell.defaults.string(forKey: "player2")! as String,
+                     "player2Score": lokalniRezultatVar,
+                     "winner":winner as String]
+        
         ref.child(key).setValue(match)
     }
     
@@ -120,8 +118,14 @@ class KrajViewController: UIViewController, LoginButtonDelegate {
       shareLinkContent.contentURL = URL(string: "https://apps.apple.com/us/app/find-me-camera-hunt-game/id1561633127")!
       
       // Optional:
+        let player1Name = cell.defaults.string(forKey: "player1")
+        let player2Name = cell.defaults.string(forKey: "player2")
+        
+        let player1Result = "\(player1Name ?? "") : \(protivnikRezultatVar)"
+        let player2Result = "\(player2Name ?? "") : \(lokalniRezultatVar)"
+        
       shareLinkContent.hashtag = Hashtag("#FindMe")
-      shareLinkContent.quote = "\(protivnikRezultatVar) vs \(lokalniRezultatVar)\nOpen your eyes and find objects quickly!"
+      shareLinkContent.quote = "\(player1Result) vs \(player2Result)\nOpen your eyes and find objects quickly!"
       
       return shareLinkContent
     }
@@ -182,8 +186,14 @@ class KrajViewController: UIViewController, LoginButtonDelegate {
     
     
     private func prikaziRezultate(){
-        protivnikRezultat.text = protivnikRezultatVar
-        lokalniRezultat.text = lokalniRezultatVar
+        let player1Name = cell.defaults.string(forKey: "player1")
+        let player2Name = cell.defaults.string(forKey: "player2")
+        
+        let player1Result = "\(player1Name ?? "") : \(protivnikRezultatVar)"
+        let player2Result = "\(player2Name ?? "") : \(lokalniRezultatVar)"
+        
+        protivnikRezultat.text = player1Result
+        lokalniRezultat.text = player2Result
         protivnikRezultat.sizeToFit()
         lokalniRezultat.sizeToFit()
     }

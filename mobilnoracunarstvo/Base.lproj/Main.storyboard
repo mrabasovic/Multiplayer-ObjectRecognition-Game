@@ -276,10 +276,10 @@
                     </view>
                     <connections>
                         <outlet property="gameResultsLabel" destination="iUZ-rL-NOu" id="dIv-ZY-9F3"/>
-                        <outlet property="lokalniRezultat" destination="R4h-6Q-Avv" id="wuM-PR-M5L"/>
+                        <outlet property="lokalniRezultat" destination="R4h-6Q-Avv" id="K3h-Or-Z7o"/>
                         <outlet property="mainmenuBtn" destination="nQt-v6-POs" id="7qV-sw-ULQ"/>
                         <outlet property="matchHistoryBtn" destination="jsy-le-vSX" id="DkQ-AS-Bub"/>
-                        <outlet property="protivnikRezultat" destination="Mtk-8n-vLi" id="7X5-of-j7e"/>
+                        <outlet property="protivnikRezultat" destination="Mtk-8n-vLi" id="wEY-2m-reC"/>
                         <outlet property="shareBtn" destination="0bw-if-l6G" id="Fle-vN-HRr"/>
                     </connections>
                 </viewController>

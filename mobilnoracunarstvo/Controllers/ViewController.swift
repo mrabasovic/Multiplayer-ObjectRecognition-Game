@@ -34,10 +34,8 @@ class ViewController: UIViewController {
 //        hostBtn.layer.cornerRadius = 5
 //        hostBtn.layer.borderWidth = 1
 //        hostBtn.layer.borderColor = UIColor.yellow.cgColor
+        
         hostBtn.layer.cornerRadius = 20
-        
-//
-        
         
         view.bringSubviewToFront(naslovLabela)
         view.bringSubviewToFront(hostBtn)
@@ -48,9 +46,6 @@ class ViewController: UIViewController {
         opisLabela.text = "Detect as many objects as you can with your camera!"
       
         opisLabela.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        
-        
-        
         
         hostBtn.translatesAutoresizingMaskIntoConstraints = false
         hostBtn.widthAnchor.constraint(equalToConstant: 250).isActive = true
@@ -64,15 +59,13 @@ class ViewController: UIViewController {
     let captureSession = AVCaptureSession()
     private var gameCenterHelper: GameCenterHelper!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
         gameCenterHelper = GameCenterHelper()
         gameCenterHelper.delegate = self
         gameCenterHelper.authenticatePlayer()
-        
         
         guard let captureDevice = AVCaptureDevice.default(for: .video) else{return}
         guard let input = try? AVCaptureDeviceInput(device: captureDevice) else{return}
@@ -106,9 +99,6 @@ class ViewController: UIViewController {
         guard let vc = segue.destination as? GameViewController,
               let match = sender as? GKMatch
         else { return }
-        
-        //gameCenterHelper.delegate = self // OBISI ovo ako ne treba. nisam siguran. mislim da ne mora jer vec ima u viewdidload
-        
         vc.match = match
     }
 }
@@ -120,7 +110,7 @@ extension ViewController: GameCenterHelperDelegate {
     
     func didChangeAuthStatus(isAuthenticated: Bool) {
         print("usao u didChangeAuthStatus")
-        //btnStart.isEnabled = isAuthenticated
+        
     }
     
     func presentGameCenterAuth(viewController: UIViewController?) {
@@ -137,18 +127,6 @@ extension ViewController: GameCenterHelperDelegate {
     
     func presentGame(match: GKMatch) {
         print("usao u present game")
-        
-        // MISLIM DA OVO ISPOD NE MOZE AL NEKA GA TU ZA SVAKI SLUCAJ
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
-//
-//        // for programmatically presenting view controller
-//        // present(viewController, animated: true, completion: nil)
-//
-//        //For Story board segue. you will also have to setup prepare segue for this to work.
-//         self?.performSegue(withIdentifier: "Identifier", sender: nil)
-//          }
-        
-        
         performSegue(withIdentifier: "showGame", sender: match)
     }
 }

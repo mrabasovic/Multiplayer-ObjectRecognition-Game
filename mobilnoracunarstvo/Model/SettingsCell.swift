@@ -13,11 +13,9 @@ class SettingsCell: UITableViewCell {
     // MARK: - Properties
     lazy var switchControl: UISwitch = {
         let switchControl = UISwitch()
-        //switchControl.isOn = defaults.bool(forKey: <#T##String#>)
         
         switchControl.onTintColor = UIColor.yellow
         switchControl.translatesAutoresizingMaskIntoConstraints = false
-        //switchControl.actions(forTarget: switchChanged(sender: switchControl), forControlEvent: .valueChanged)
         switchControl.addTarget(self, action: #selector(handleSwitchAction), for: .valueChanged)
                                         // ZNACI SVAKI put kad je value changed tj pritisnuto dugme poziva se fja handleSwitchAction /////// #selector(handleSwitchAction)
         return switchControl
